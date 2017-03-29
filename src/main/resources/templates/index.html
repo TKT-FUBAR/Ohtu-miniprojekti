@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head th:include="fragment/base :: head (title=Home)">
+        <title></title>
+    </head>
+
+    <body>
+        <div class="row">
+            <div class="col-xs-12 col-md-8 col-md-push-2">
+                <h1>Add reference</h1>
+                <div th:include="fragment/forms :: add-book" th:remove="tag"></div>
+
+                <div  th:if="${not #lists.isEmpty(books)}">
+                    <h2>Books in repository:</h2>
+                    <ul class="reference-list">
+                        <li th:each="book : ${books}">
+                            Title: <span th:text="${book.title}"></span>
+                            <ul>
+                                <li>Handle: <span th:text="${book.handle}"></span></li>
+                                <li>Author: <span th:text="${book.author}"></span></li>
+                                <li>Year: <span th:text="${book.year}"></span></li>
+                                <li>Publisher: <span th:text="${book.publisher}"></span></li>
+                                <li>Address: <span th:text="${book.address}"></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

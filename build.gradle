@@ -41,11 +41,17 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'application'
 
+run {
+	standardInput = System.in
+}
 
 repositories {
     mavenCentral()
 }
+
+mainClassName='fi.fubar.bibtex.Main'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8

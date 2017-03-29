@@ -1,8 +1,14 @@
-﻿language: java
-sudo: false
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer
+language: java
+#addons:
+#  apt:
+#    packages:
+#      - oracle-java8-installer
 jdk:
   - oraclejdk8
+notifications:
+  irc:
+    channels:
+      - "open.ircnet.net#ohtufubar"
+    template:
+      - "%{repository} (%{commit}) : %{message}  "
+      - "Build details: %{build_url}"

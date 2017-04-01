@@ -4,3 +4,6 @@
 
 Mini project related the [Software Engineering](https://github.com/mluukkai/ohtu2017/wiki/Ohjelmistotuotanto-2017) course at the University of Helsinki.
 
+[Product backlog](https://docs.google.com/spreadsheets/d/1HYBVMPEVb1osny_8HMqPEH_wfJTEHAolTwObCtwdREc/edit#gid=0)
+
+[Sprint 1](https://docs.google.com/spreadsheets/d/1HYBVMPEVb1osny_8HMqPEH_wfJTEHAolTwObCtwdREc/edit#gid=2057570740)

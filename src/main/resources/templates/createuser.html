@@ -7,9 +7,13 @@
     <body>
         <h1>Create a user</h1>
 
-        <h2 th:text="${kayttaja}">kayttajatiedot</h2>
         
-        <form th:action="@{/createuser}" method="GET">
+        <h2 th:each="alkio : ${userdb}">
+            <span th:text="${alkio}">kayttajat</span>
+        </h2>
+        
+        
+        <form th:action="@{/createuser}" method="POST">
             <input type="text" name="tunnus"/>
             <input type="text" name="salasana"/>
             <input type="submit"/>

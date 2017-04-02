@@ -8,8 +8,9 @@
         <h1>Create a user</h1>
 
         
-        <h2 th:each="alkio : ${userdb}">
-            <span th:text="${alkio}">kayttajat</span>
+        <h2 th:each="user : ${userdb}">
+            <span th:text="${user.name}">kayttajat</span>
+            <span th:text="${user.password}">kayttajat</span>
         </h2>
         
         

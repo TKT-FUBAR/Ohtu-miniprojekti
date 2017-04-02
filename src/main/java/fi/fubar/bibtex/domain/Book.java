@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class Book extends AbstractPersistable<Long> {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String handle;
     private String title;
@@ -44,27 +44,39 @@ public class Book extends AbstractPersistable<Long> {
     }
 
     public void setHandle(String handle) {
-        this.handle = handle;
+        if (!handle.isEmpty()) {
+            this.handle = handle;
+        }
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        if (!title.isEmpty()) {
+            this.title = title;
+        }
     }
 
     public void setAuthor(String author) {
-        this.author = author;
+        if (!author.isEmpty()) {
+            this.author = author;
+        }
     }
 
     public void setYear(int year) {
-        this.year = year;
+        if (year > 0) {
+            this.year = year;
+        }
     }
 
     public void setPublisher(String publisher) {
-        this.publisher = publisher;
+        if (!address.isEmpty()) {
+            this.publisher = publisher;
+        }
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        if (!address.isEmpty()) {
+            this.address = address;
+        }
     }
 
 }

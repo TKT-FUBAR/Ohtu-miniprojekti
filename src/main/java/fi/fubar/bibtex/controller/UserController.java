@@ -27,8 +27,8 @@ public class UserController {
     }
     
     @RequestMapping(value = "/createuser", method = RequestMethod.POST)
-    public String add(String s) {
-        userdb.add(s);
-        return "createuser";
+    public String add(String tunnus, String salasana) {
+        userdb.add(tunnus + "," + salasana);
+        return "redirect:/createuser";
     }
 }

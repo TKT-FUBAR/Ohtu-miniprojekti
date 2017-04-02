@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Otsikko</title>
+    </head>
+
+    <body>
+        <h1>Create a user</h1>
+
+        <h2 th:text="${kayttaja}">kayttajatiedot</h2>
+        
+        <form th:action="@{/createuser}" method="GET">
+            <input type="text" name="tunnus"/>
+            <input type="text" name="salasana"/>
+            <input type="submit"/>
+        </form>
+        
+    </body>
+</html>

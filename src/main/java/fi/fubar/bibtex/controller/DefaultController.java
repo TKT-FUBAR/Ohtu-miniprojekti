@@ -15,10 +15,10 @@ public class DefaultController {
 
     @RequestMapping("*")
     public String redirectHome() {
-        return "redirect:/";
+        return "redirect:/references";
     }
     
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/references", method = RequestMethod.GET)
     public String list(Model model) {
         model.addAttribute("books", bookRepository.findAll());
         return "index";

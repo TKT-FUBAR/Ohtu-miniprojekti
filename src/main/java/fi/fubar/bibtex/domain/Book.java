@@ -44,39 +44,27 @@ public class Book extends AbstractPersistable<Long> {
     }
 
     public void setHandle(String handle) {
-        if (!handle.isEmpty()) {
             this.handle = handle;
-        }
     }
 
     public void setTitle(String title) {
-        if (!title.isEmpty()) {
             this.title = title;
-        }
     }
 
     public void setAuthor(String author) {
-        if (!author.isEmpty()) {
             this.author = author;
-        }
     }
 
     public void setYear(int year) {
-        if (year > 0) {
             this.year = year;
-        }
     }
 
     public void setPublisher(String publisher) {
-        if (!address.isEmpty()) {
             this.publisher = publisher;
-        }
     }
 
     public void setAddress(String address) {
-        if (!address.isEmpty()) {
             this.address = address;
-        }
     }
 
 }

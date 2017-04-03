@@ -1,4 +1,4 @@
-
+/*
 package fi.fubar.bibtex.controller;
 
 import fi.fubar.bibtex.repository.UserRepository;
@@ -29,3 +29,4 @@ public class UserController {
         return "redirect:/createuser";
     }
 }
+*/

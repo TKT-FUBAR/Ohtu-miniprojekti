@@ -1,4 +1,4 @@
-
+/*
 package fi.fubar.bibtex.domain;
 
 import javax.persistence.Entity;
@@ -34,3 +34,4 @@ public class User extends AbstractPersistable<Long> {
     
     
 }
+*/

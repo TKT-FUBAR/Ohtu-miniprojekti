@@ -1,4 +1,4 @@
-/*
+
 package fi.fubar.bibtex.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +28,3 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .withUser("foo").password("bar").roles("USER");
     }
 }
-*/

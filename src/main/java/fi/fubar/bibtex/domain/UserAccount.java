@@ -1,4 +1,4 @@
-/*
+
 package fi.fubar.bibtex.domain;
 
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User extends AbstractPersistable<Long> {
+public class UserAccount extends AbstractPersistable<Long> {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,4 +34,3 @@ public class User extends AbstractPersistable<Long> {
     
     
 }
-*/

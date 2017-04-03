@@ -1,8 +1,8 @@
-/*
+
 package fi.fubar.bibtex.controller;
 
 import fi.fubar.bibtex.repository.UserRepository;
-import fi.fubar.bibtex.domain.User;
+import fi.fubar.bibtex.domain.UserAccount;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +24,8 @@ public class UserController {
     }
     
     @RequestMapping(value = "/createuser", method = RequestMethod.POST)
-    public String add(User user) {
+    public String add(UserAccount user) {
         userRepository.save(user);
         return "redirect:/createuser";
     }
 }
-*/

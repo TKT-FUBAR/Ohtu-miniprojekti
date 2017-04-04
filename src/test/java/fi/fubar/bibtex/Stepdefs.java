@@ -3,19 +3,20 @@ package fi.fubar.bibtex;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import io.github.bonigarcia.wdm.ChromeDriverManager;
+//import io.github.bonigarcia.wdm.ChromeDriverManager;
 import static org.junit.Assert.assertTrue;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Stepdefs {
     WebDriver driver;
 
     public Stepdefs() {
-        ChromeDriverManager.getInstance().setup();
-        this.driver = new ChromeDriver();
+        //ChromeDriverManager.getInstance().setup();
+        this.driver = new FirefoxDriver();
     }
     
     

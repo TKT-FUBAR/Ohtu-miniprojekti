@@ -69,8 +69,9 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    compile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
     
+    compile("org.thymeleaf:thymeleaf-spring4")
     compile("com.h2database:h2")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("com.heroku.sdk:heroku-jdbc:0.1.1")
@@ -80,8 +81,10 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: seleniumVersion
     compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version: seleniumVersion
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
+    
     testCompile "info.cukes:cucumber-java:" + cucumberVersion
     testCompile "info.cukes:cucumber-junit:" + cucumberVersion
+    testCompile "info.cukes:cucumber-spring:" + cucumberVersion
     testCompile "junit:junit:" + junitVersion 
 }
 

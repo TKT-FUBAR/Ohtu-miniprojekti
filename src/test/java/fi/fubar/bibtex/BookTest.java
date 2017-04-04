@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.fubar.bibtext;
+package fi.fubar.bibtex;
 
 import org.junit.Before;
 import org.junit.Test;

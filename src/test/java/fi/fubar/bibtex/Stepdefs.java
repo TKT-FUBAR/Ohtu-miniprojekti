@@ -10,7 +10,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Stepdefs {
-    WebDriver driver = new ChromeDriver();
+    WebDriver driver;
+
+    public Stepdefs() {
+        System.setProperty("webdriver.chrome.driver", "chromedriver");
+        this.driver = new ChromeDriver();
+    }
+    
+    
     
     @Given("^user is logged in$")
     public void user_is_logged_in() throws Throwable {
@@ -32,6 +39,7 @@ public class Stepdefs {
     public void the_form_is_submitted() throws Throwable {
         WebElement elem = driver.findElement(By.name("submit"));
         elem.submit();
+        Thread.sleep(1000l);
     }
 
     @Then("^a reference to \"([^\"]*)\" is added\\.$")
@@ -47,7 +55,6 @@ public class Stepdefs {
         element.sendKeys(foo);
         element = driver.findElement(By.name("password"));
         element.sendKeys(bar);
-        element.findElement(By.name("submit"));
         element.submit();
         Thread.sleep(1000l);
     }

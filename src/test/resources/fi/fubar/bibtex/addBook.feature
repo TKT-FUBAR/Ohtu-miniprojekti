@@ -8,6 +8,6 @@ Feature: User can add book reference
         And the entry "Arto" is entered into the field "author"
         And the entry "2017" is entered into the field "year"
         And the entry "Otava" is entered into the field "publisher"
-        And the entry "NYC" is entered into the field "adress"
+        And the entry "NYC" is entered into the field "address"
         And the form is submitted
-        Then a reference to "Title: ABC" is added.
+        Then a reference to "ABC" is added.

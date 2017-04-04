@@ -1,7 +1,6 @@
 package fi.fubar.bibtex;
 
 import gherkin.Main;
-import static org.codehaus.groovy.ast.tools.GeneralUtils.args;
 import org.junit.rules.ExternalResource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -18,7 +17,7 @@ class ServerRule extends ExternalResource{
 
     @Override
     protected void before() throws Throwable {
-        this.app = SpringApplication.run(Main.class);
+        //this.app = SpringApplication.run(Main.class);
     }
 
     @Override

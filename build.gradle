@@ -32,10 +32,14 @@ testCompile 'junit:junit:3.8.2'
  */
 buildscript {
     repositories {
-        mavenCentral()
+	mavenCentral()
+        jcenter()
+        maven { url 'http://repo.spring.io/snapshot' }
+        maven { url 'http://repo.spring.io/milestone' }
+maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.0.0.BUILD-SNAPSHOT'
     }
 }
 
@@ -56,6 +60,9 @@ run {
 repositories {
     mavenCentral()
     maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
+        jcenter()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
 }
 
 mainClassName='fi.fubar.bibtex.Main'
@@ -69,9 +76,10 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+
+    compile("org.thymeleaf:thymeleaf-spring5")
+    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
     testCompile("org.springframework.boot:spring-boot-starter-test")
-    
-    compile("org.thymeleaf:thymeleaf-spring4")
     compile("com.h2database:h2")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("com.heroku.sdk:heroku-jdbc:0.1.1")

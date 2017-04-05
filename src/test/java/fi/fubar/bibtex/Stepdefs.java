@@ -25,6 +25,11 @@ public class Stepdefs {
     public void user_is_logged_in() throws Throwable {
         logInWith("foo", "bar");
     }
+    
+    @Given("^user navigates to the \"([^\"]*)\" page$")
+    public void user_navigates_to_the_page(String str1) throws Throwable {
+        driver.get("http://localhost:" + 8080 +"/"+str1);
+    }
 
     @Given("^has navigated to the \"([^\"]*)\" page$")
     public void has_navigated_to_the_page(String arg1) throws Throwable {
@@ -49,7 +54,13 @@ public class Stepdefs {
         assertTrue(driver.getCurrentUrl().contains("references"));
         assertTrue(driver.getPageSource().contains(ref));
     }
-
+    
+    @Then("^a \"([^\"]*)\" is added\\.$")
+    public void a_is_added(String arg1) throws Throwable {
+        assertTrue(driver.getCurrentUrl().contains("createuser"));
+        assertTrue(driver.getPageSource().contains(arg1));
+    }
+    
     private void logInWith(String foo, String bar) throws InterruptedException {
         driver.get("http://localhost:" + 8080);
         assertTrue(driver.getPageSource().contains("Login with Username and Password"));

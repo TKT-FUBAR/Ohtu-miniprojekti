@@ -8,22 +8,31 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-8 col-md-push-2">
-                    <h1>Add reference</h1>
-                    <div th:include="fragment/forms :: add-book" th:remove="tag"></div>
+                    <h2>Add reference</h2>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item active"><a class="nav-link active" href="#form-book" data-toggle="tab" role="tab">Add Book</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#form-article" data-toggle="tab" role="tab">Add Article</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#form-inproceedings" data-toggle="tab" role="tab">Add InProceedings</a></li>
+                    </ul>
 
-                    <div  th:if="${not #lists.isEmpty(books)}">
-                        <h2>Books in repository:</h2>
+                    <div class="tab-content ">
+                        <div class="tab-pane active" id="form-book" role="tabpanel">
+                            <div th:include="fragment/forms :: add-book" th:remove="tag">
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="form-article" role="tabpanel">
+                            <div th:include="fragment/forms :: add-article" th:remove="tag">
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="form-inproceedings" role="tabpanel">
+                            <div th:include="fragment/forms :: add-inproceedings" th:remove="tag"></div>
+                        </div>
+                    </div>
+
+                    <div  th:if="${not #lists.isEmpty(references)}">
+                        <h2>References in repository:</h2>
                         <ul class="reference-list">
-                            <li th:each="book : ${books}">
-                                Title: <span th:text="${book.title}"></span>
-                                <ul>
-                                    <li>Handle: <span th:text="${book.handle}"></span></li>
-                                    <li>Author: <span th:text="${book.author}"></span></li>
-                                    <li>Year: <span th:text="${book.year}"></span></li>
-                                    <li>Publisher: <span th:text="${book.publisher}"></span></li>
-                                    <li>Address: <span th:text="${book.address}"></span></li>
-                                </ul>
-                            </li>
+                            <li th:each="reference : ${references}" th:text="${reference}">Reference info</li>
                         </ul>
                     </div>
                 </div>

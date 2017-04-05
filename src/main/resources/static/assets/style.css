@@ -1,3 +1,7 @@
 body {
     background-color: #caccaa;
 }
+
+.tab-pane {
+    padding-top: 15px;
+}

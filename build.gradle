@@ -15,7 +15,7 @@ apply plugin: 'application'
 project.ext {
     cucumberVersion = "1.2.5"
     junitVersion = "4.12"
-    seleniumVersion = "2.53.1"
+    seleniumVersion = "3.3.1"
 }
 
 run {
@@ -45,7 +45,9 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: seleniumVersion
     compile group: 'org.seleniumhq.selenium', name: 'selenium-api', version: seleniumVersion
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
-    testCompile("io.github.bonigarcia:webdrivermanager:1.4.1") {
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-remote-driver', version: seleniumVersion
+    testCompile("io.github.bonigarcia:webdrivermanager:1.6.2") {
         exclude group: 'org.seleniumhq.selenium'
     }
     testCompile "info.cukes:cucumber-core:" + cucumberVersion

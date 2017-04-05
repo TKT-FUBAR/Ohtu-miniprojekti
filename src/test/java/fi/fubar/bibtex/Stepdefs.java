@@ -15,7 +15,12 @@ public class Stepdefs {
     WebDriver driver;
 
     public Stepdefs() {
-        FirefoxDriverManager.getInstance().setup();
+        try {
+            FirefoxDriverManager.getInstance().setup();
+        } catch (Exception e) {
+            
+        }
+        
         this.driver = new FirefoxDriver();
     }
 

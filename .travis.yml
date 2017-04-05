@@ -1,5 +1,6 @@
 language: java
-#addons:
+addons:
+    firefox: "49.0"
 #  apt:
 #    packages:
 #      - oracle-java8-installer

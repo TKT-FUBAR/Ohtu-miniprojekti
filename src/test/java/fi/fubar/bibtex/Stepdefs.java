@@ -1,5 +1,6 @@
 package fi.fubar.bibtex;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -18,10 +19,15 @@ public class Stepdefs {
         try {
             FirefoxDriverManager.getInstance().setup();
         } catch (Exception e) {
-            
+            System.out.println("Drivermanager failed");
         }
         
         this.driver = new FirefoxDriver();
+    }
+    
+    @After
+    public void tearDown() {
+        driver.quit();
     }
 
     @Given("^user is logged in$")
@@ -33,20 +39,32 @@ public class Stepdefs {
     public void user_navigates_to_the_page(String str1) throws Throwable {
         driver.get("http://localhost:" + 8080 + "/" + str1);
     }
+    
+    @Given("^has navigated to the \"([^\"]*)\" tab")
+    public void user_navigates_to_the_tab(String str1) throws Throwable {
+        driver.findElement(By.name(str1)).click();
+        Thread.sleep(1000);
+    }
 
     @Given("^has navigated to the \"([^\"]*)\" page$")
     public void has_navigated_to_the_page(String arg1) throws Throwable {
-        assertTrue(driver.getCurrentUrl().contains("references"));
+        assertTrue(driver.getCurrentUrl().contains(arg1));
     }
 
     @When("^the entry \"([^\"]*)\" is entered into the field \"([^\"]*)\"$")
     public void the_entry_is_entered_into_the_field(String entry, String field) throws Throwable {
-        driver.findElement(By.name(field)).sendKeys(entry);
+        driver.findElement(By.id(field)).sendKeys(entry);
     }
 
     @When("^the form is submitted$")
     public void the_form_is_submitted() throws Throwable {
         driver.findElement(By.name("submit")).click();
+        Thread.sleep(1000l);
+    }
+    
+    @When("^the form \"([^\"]*)\" is submitted$")
+    public void the_form_x_is_submitted(String str1) throws Throwable {
+        driver.findElement(By.id(str1 + "submit")).click();
         Thread.sleep(1000l);
     }
 

@@ -55,6 +55,11 @@ public class Stepdefs {
     public void the_entry_is_entered_into_the_field(String entry, String field) throws Throwable {
         driver.findElement(By.id(field)).sendKeys(entry);
     }
+    
+    @When("^the entry \"([^\"]*)\" is entered into the field \"([^\"]*)\" of \"([^\"]*)\" form$")
+    public void the_entry_is_entered_into_the_field_of_form(String entry, String field, String form) throws Throwable {
+        driver.findElement(By.id(form)).findElement(By.name(field)).sendKeys(entry);
+    }
 
     @When("^the form is submitted$")
     public void the_form_is_submitted() throws Throwable {
@@ -64,7 +69,7 @@ public class Stepdefs {
     
     @When("^the form \"([^\"]*)\" is submitted$")
     public void the_form_x_is_submitted(String str1) throws Throwable {
-        driver.findElement(By.id(str1 + "submit")).click();
+        driver.findElement(By.id(str1)).findElement(By.name("submit")).click();
         Thread.sleep(1000l);
     }
 

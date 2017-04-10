@@ -1,6 +1,6 @@
-Feature: User can add article reference
+Feature: User can add inproceedings reference
 
-    Scenario: user can add book reference using webform
+    Scenario: user can add inproceedings reference using webform
         Given user is logged in
         And clicks the  "Add a reference" link
         And has navigated to the "add_ip" tab 

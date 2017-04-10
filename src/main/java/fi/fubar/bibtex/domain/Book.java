@@ -1,5 +1,6 @@
 package fi.fubar.bibtex.domain;
 
+import fi.fubar.bibtex.util.StringUtils;
 import javax.persistence.Entity;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 import javax.persistence.GeneratedValue;
@@ -153,12 +154,45 @@ public class Book extends AbstractPersistable<Long> implements Reference {
     }
 
     @Override
+    public String getType() {
+        return "book";
+    }
+    
+    @Override
     public String toString() {
         return "Book: " + author + ". " + title;
     }
 
     @Override
     public String toBibTex() {
-        return "@book{}";
+        StringBuilder sb = new StringBuilder("@book{");
+        sb.append(StringUtils.actualOrDefault(handle));
+        authorOrEditor(sb);
+        sb.append(",\ntitle = {").append(StringUtils.actualOrDefault(title)).append("}");
+        sb.append(",\npublisher = {").append(StringUtils.actualOrDefault(publisher)).append("}");
+        sb.append(",\nyear = {").append(StringUtils.actualOrDefault(year)).append("}");
+        StringUtils.optional(sb, "volume", volume);
+        StringUtils.optional(sb, "number", number);
+        StringUtils.optional(sb, "series", series);
+        StringUtils.optional(sb, "address", address);
+        StringUtils.optional(sb, "edition", edition);
+        StringUtils.optional(sb, "month", month);
+        StringUtils.optional(sb, "note", note);
+        sb.append("\n}");
+        return StringUtils.escapeScandics(sb.toString());
+    }
+
+    private void authorOrEditor(StringBuilder sb) {
+        if ((author == null || author.isEmpty()) &&
+                (editor == null || editor.isEmpty())) {
+            sb.append(",\nauthor = {N/A}");
+            return;
+        } 
+        if (author != null && !author.isEmpty()) {
+            sb.append(",\nauthor = {").append(author).append("}");
+        }
+        if (editor != null && !editor.isEmpty()) {
+            sb.append(",\neditor = {").append(editor).append("}");
+        }
     }
 }

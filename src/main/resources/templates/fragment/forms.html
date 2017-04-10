@@ -4,8 +4,8 @@
         <title></title>
     </head>
     <body>
-        <div th:fragment="add-book">
-            <form class="form-horizontal" th:method="post" th:action="@{/book/add}">
+        <div th:fragment="book (action)">
+            <form class="form-horizontal" th:method="post" th:action="@{/book/} + ${action}">
                 <div class="form-group">
                     <label for="handle" class="col-sm-2 control-label">Handle</label>
                     <div class="col-sm-10">
@@ -89,13 +89,15 @@
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
+                <input type="hidden" name="type" value="book" />
+                <input type="hidden" name="id" th:if="${reference}" th:value="${reference.id}" />
             </form>
         </div>
         
         <!-- // Add Article //-->
         
-        <div th:fragment="add-article">
-            <form class="form-horizontal" th:method="post" th:action="@{/article/add}">
+        <div th:fragment="article (action)">
+            <form class="form-horizontal" th:method="post" th:action="@{/article/} + ${action}">
                 <div class="form-group">
                     <label for="handle" class="col-sm-2 control-label">Handle</label>
                     <div class="col-sm-10">
@@ -161,14 +163,16 @@
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
+                <input type="hidden" name="type" value="article" />
+                <input type="hidden" name="id" th:if="${reference}" th:value="${reference.id}" />
             </form>
         </div>
         
         
         <!-- // Add Article //-->
         
-        <div th:fragment="add-inproceedings">
-            <form class="form-horizontal" th:method="post" th:action="@{/inproceedings/add}">
+        <div th:fragment="inproceedings (action)">
+            <form class="form-horizontal" th:method="post" th:action="@{/inproceedings/} + ${action}">
                 <div class="form-group">
                     <label for="handle" class="col-sm-2 control-label">Handle</label>
                     <div class="col-sm-10">
@@ -264,6 +268,8 @@
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
+                <input type="hidden" name="type" value="inproceedings" />
+                <input type="hidden" name="id" th:if="${reference}" th:value="${reference.id}" />
             </form>
         </div>
     </body>

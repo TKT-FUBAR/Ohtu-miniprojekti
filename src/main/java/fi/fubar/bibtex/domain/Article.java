@@ -153,4 +153,9 @@ public class Article extends AbstractPersistable<Long> implements Reference {
         return StringUtils.escapeScandics(sb.toString());
     }
 
+    @Override
+    public String getCreator() {
+        return author;
+    }
+
 }

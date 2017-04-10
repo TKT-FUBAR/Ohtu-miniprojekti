@@ -1,6 +1,8 @@
-
 package fi.fubar.bibtex.service;
 
+import fi.fubar.bibtex.domain.Article;
+import fi.fubar.bibtex.domain.Book;
+import fi.fubar.bibtex.domain.InProceedings;
 import fi.fubar.bibtex.domain.Reference;
 import fi.fubar.bibtex.repository.ArticleRepository;
 import fi.fubar.bibtex.repository.BookRepository;
@@ -15,25 +17,25 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ReferenceService {
-    
+
     @Autowired
     private ArticleRepository articleRepository;
     @Autowired
     private BookRepository bookRepository;
     @Autowired
     private InProceedingsRepository inproceedingsRepository;
-    
+
     public List<Reference> findAll() {
         List<Reference> references = new ArrayList<>();
         references.addAll(bookRepository.findAll());
         references.addAll(articleRepository.findAll());
         references.addAll(inproceedingsRepository.findAll());
-        
+
         return references;
     }
 
     public Reference findByTypeAndId(String type, Long id) {
-        switch(type) {
+        switch (type) {
             case "book":
                 return bookRepository.findOne(id);
             case "article":
@@ -42,6 +44,17 @@ public class ReferenceService {
                 return inproceedingsRepository.findOne(id);
             default:
                 return null;
+        }
+    }
+
+    public void save(Reference ref) {
+        switch (ref.getType()) {
+            case "book":
+                bookRepository.save((Book) ref);
+            case "article":
+                articleRepository.save((Article) ref);
+            case "inproceedings":
+                inproceedingsRepository.save((InProceedings) ref);
         }
     }
 }

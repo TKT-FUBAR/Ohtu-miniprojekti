@@ -195,4 +195,13 @@ public class Book extends AbstractPersistable<Long> implements Reference {
             sb.append(",\neditor = {").append(editor).append("}");
         }
     }
+
+    @Override
+    public String getCreator() {
+        String creator = author;
+        if(!author.isEmpty() && !editor.isEmpty())
+            creator += ", ";
+        creator += editor;
+        return creator;
+    }
 }

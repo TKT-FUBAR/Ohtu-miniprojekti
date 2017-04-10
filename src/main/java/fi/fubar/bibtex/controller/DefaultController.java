@@ -23,9 +23,4 @@ public class DefaultController {
         model.addAttribute("references", referenceService.findAll());
         return "index";
     }
-    
-    @RequestMapping(value = "/references/add", method = RequestMethod.GET)
-    public String add(Model model) {
-        return "add-reference";
-    }
 }

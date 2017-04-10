@@ -202,4 +202,9 @@ public class InProceedings extends AbstractPersistable<Long> implements Referenc
         sb.append("\n}");
         return StringUtils.escapeScandics(sb.toString());
     }
+
+    @Override
+    public String getCreator() {
+        return author;
+    }
 }

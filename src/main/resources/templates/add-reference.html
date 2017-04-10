@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head th:include="fragment/base :: head (title=Add Reference)">
+    <head th:include="fragment/base :: head (title='Add Reference')">
         <title></title>
     </head>
 
@@ -17,15 +17,15 @@
 
                     <div class="tab-content ">
                         <div class="tab-pane active" id="form-book" role="tabpanel">
-                            <div th:include="fragment/forms :: add-book" th:remove="tag">
+                            <div th:include="fragment/forms :: book (action=add)" th:remove="tag">
                             </div>
                         </div>
                         <div class="tab-pane" id="form-article" role="tabpanel">
-                            <div th:include="fragment/forms :: add-article" th:remove="tag">
+                            <div th:include="fragment/forms :: article (action=add)" th:remove="tag">
                             </div>
                         </div>
                         <div class="tab-pane" id="form-inproceedings" role="tabpanel">
-                            <div th:include="fragment/forms :: add-inproceedings" th:remove="tag"></div>
+                            <div th:include="fragment/forms :: inproceedings (action=add)" th:remove="tag"></div>
                         </div>
                     </div>
                 </div>

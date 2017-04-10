@@ -156,4 +156,9 @@ public class Book extends AbstractPersistable<Long> implements Reference {
     public String toString() {
         return "Book: " + author + ". " + title;
     }
+
+    @Override
+    public String toBibTex() {
+        return "@book{}";
+    }
 }

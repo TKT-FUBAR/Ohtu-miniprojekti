@@ -1,10 +1,6 @@
 package fi.fubar.bibtex.controller;
 
-import fi.fubar.bibtex.domain.Reference;
-import fi.fubar.bibtex.repository.ArticleRepository;
-import fi.fubar.bibtex.repository.BookRepository;
-import fi.fubar.bibtex.repository.InProceedingsRepository;
-import java.util.ArrayList;
+import fi.fubar.bibtex.service.ReferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class DefaultController {
     
     @Autowired
-    private BookRepository bookRepository;
-    @Autowired
-    private ArticleRepository articlekRepository;
-    @Autowired
-    private InProceedingsRepository inProceedingsRepository;
+    private ReferenceService referenceService;
 
     @RequestMapping("/")
     public String redirectHome() {
@@ -28,11 +20,12 @@ public class DefaultController {
     
     @RequestMapping(value = "/references", method = RequestMethod.GET)
     public String list(Model model) {
-        ArrayList<Reference> references = new ArrayList<>();
-        references.addAll(bookRepository.findAll());
-        references.addAll(articlekRepository.findAll());
-        references.addAll(inProceedingsRepository.findAll());
-        model.addAttribute("references", references);
+        model.addAttribute("references", referenceService.findAll());
         return "index";
+    }
+    
+    @RequestMapping(value = "/references/add", method = RequestMethod.GET)
+    public String add(Model model) {
+        return "add-reference";
     }
 }

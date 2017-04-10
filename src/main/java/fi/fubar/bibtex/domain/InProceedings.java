@@ -174,4 +174,9 @@ public class InProceedings extends AbstractPersistable<Long> implements Referenc
     public String toString() {
         return "InProceedings: " + author + ". " + title;
     }
+
+    @Override
+    public String toBibTex() {
+        return "@inproceedings{}";
+    }
 }

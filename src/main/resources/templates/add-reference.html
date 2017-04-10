@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head th:include="fragment/base :: head (title=Home)">
+        <title></title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-md-push-2">
+                    <h2>Add reference</h2>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item active"><a class="nav-link active" href="#form-book" data-toggle="tab" role="tab" name="add_book">Add Book</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#form-article" data-toggle="tab" role="tab" name="add_article">Add Article</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#form-inproceedings" data-toggle="tab" role="tab" name="add_ip">Add InProceedings</a></li>
+                    </ul>
+
+                    <div class="tab-content ">
+                        <div class="tab-pane active" id="form-book" role="tabpanel">
+                            <div th:include="fragment/forms :: add-book" th:remove="tag">
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="form-article" role="tabpanel">
+                            <div th:include="fragment/forms :: add-article" th:remove="tag">
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="form-inproceedings" role="tabpanel">
+                            <div th:include="fragment/forms :: add-inproceedings" th:remove="tag"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+

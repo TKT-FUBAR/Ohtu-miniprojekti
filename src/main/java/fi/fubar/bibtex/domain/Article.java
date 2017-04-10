@@ -130,4 +130,9 @@ public class Article extends AbstractPersistable<Long> implements Reference {
         return "Article: " + author + ". " + title;
     }
 
+    @Override
+    public String toBibTex() {
+        return "@article{}";
+    }
+
 }

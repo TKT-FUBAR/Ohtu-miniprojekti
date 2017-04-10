@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head th:include="fragment/base :: head (title=Edit)">
+        <title></title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-md-push-2">
+                    <h2>Edit Article</h2>
+                    <div th:include="fragment/forms :: add-article" th:remove="tag">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

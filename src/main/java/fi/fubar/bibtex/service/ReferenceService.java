@@ -31,4 +31,17 @@ public class ReferenceService {
         
         return references;
     }
+
+    public Reference findByTypeAndId(String type, Long id) {
+        switch(type) {
+            case "book":
+                return bookRepository.findOne(id);
+            case "article":
+                return articleRepository.findOne(id);
+            case "inproceedings":
+                return inproceedingsRepository.findOne(id);
+            default:
+                return null;
+        }
+    }
 }

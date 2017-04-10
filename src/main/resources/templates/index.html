@@ -14,9 +14,10 @@
                     <h2>References in repository:</h2>
                     <ul class="reference-list">
                         <li th:each="reference : ${references}" th:text="${reference}">
-                            <span class="title" th:text="reference">Title</span>,
-                            <span class="author">Author</span>,
-                            <span class="handle">Handle</span>
+                            <a th:href=""
+                            <span class="title" th:text="reference.title">Title</span>,
+                            <span class="author" th:text="reference.creator">Author</span>,
+                            <span class="handle" th:text="reference.handle">Handle</span>
                         </li>
                     </ul>
                 </div>

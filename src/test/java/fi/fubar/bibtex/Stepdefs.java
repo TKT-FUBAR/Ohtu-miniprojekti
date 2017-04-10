@@ -54,6 +54,7 @@ public class Stepdefs {
     @Given("^clicks the  \"([^\"]*)\" link$")
     public void clicks_the_link(String arg1) throws Throwable {
        driver.findElement(By.linkText(arg1)).click();
+       Thread.sleep(1000);
     }
 
     @When("^the entry \"([^\"]*)\" is entered into the field \"([^\"]*)\"$")

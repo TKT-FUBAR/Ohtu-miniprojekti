@@ -5,6 +5,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.github.bonigarcia.wdm.FirefoxDriverManager;
+import java.io.File;
 import static org.junit.Assert.assertTrue;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,11 +17,14 @@ public class Stepdefs {
     WebDriver driver;
 
     public Stepdefs() {
-        try {
-            FirefoxDriverManager.getInstance().setup();
-        } catch (Exception e) {
-            System.out.println("Drivermanager failed");
-        }
+//        try {
+//            FirefoxDriverManager.getInstance().setup();
+//        } catch (Exception e) {
+//            System.out.println("Drivermanager failed");
+//        }
+        File file = new File("lib/geckodriver");
+        String absolutePath = file.getAbsolutePath();
+        System.setProperty("webdriver.gecko.driver", absolutePath);
         
         this.driver = new FirefoxDriver();
     }

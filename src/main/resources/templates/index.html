@@ -8,15 +8,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-8 col-md-push-2">
-                    
+
                     <a th:href="@{/references/add}">Add a reference</a>
 
-                    <div  th:if="${not #lists.isEmpty(references)}">
-                        <h2>References in repository:</h2>
-                        <ul class="reference-list">
-                            <li th:each="reference : ${references}" th:text="${reference}">Reference info</li>
-                        </ul>
-                    </div>
+                    <h2>References in repository:</h2>
+                    <ul class="reference-list">
+                        <li th:each="reference : ${references}" th:text="${reference}">
+                            <span class="title" th:text="reference">Title</span>,
+                            <span class="author">Author</span>,
+                            <span class="handle">Handle</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

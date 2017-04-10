@@ -1,8 +1,8 @@
-Feature: User can add article reference
+Feature: User can add inproceedings reference
 
-    Scenario: user can add book reference using webform
+    Scenario: user can add inproceedings reference using webform
         Given user is logged in
-        And has navigated to the "references" page
+        And clicks the  "Add a reference" link
         And has navigated to the "add_ip" tab 
         When the entry "fu" is entered into the field "handle" of "form-inproceedings" form
         And the entry "CBA" is entered into the field "title" of "form-inproceedings" form

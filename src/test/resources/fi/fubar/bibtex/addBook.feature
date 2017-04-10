@@ -2,7 +2,7 @@ Feature: User can add book reference
 
     Scenario: user can add book reference using webform
         Given user is logged in
-        And has navigated to the "references/add" page
+        And clicks the  "Add a reference" link
         And has navigated to the "add_book" tab 
         When the entry "foo" is entered into the field "handle" of "form-book" form
         And the entry "ABC" is entered into the field "title" of "form-book" form

@@ -1,3 +1,4 @@
+
 Feature: User can add book reference
 
   Scenario: user can log in with created account
@@ -13,3 +14,4 @@ Feature: User can add book reference
   And the entry "Hah" is entered into the field "password"
   And the form is submitted
   Then user is not logged in and error is shown
+

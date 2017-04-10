@@ -54,22 +54,16 @@ address = {USA},
 
     @Test
     public void testBibtex() {
-        //TODO: Fixaa, ei mee läpi, näyttää samalta mutta
-        // väsyneet silmät ei huomaa. Ehkä huomenna sit.
-//        String shouldBe = "@article{W04,\n"
-//                + "author = {Whittington, Keith J.},\n"
-//                + "title = {Infusing active learning into introductory programming courses},\n"
-//                + "journal = {J. Comput. Small Coll.},\n"
-//                + "year = {2004},\n"
-//                + "volume = {19},\n"
-//                + "number = {5},\n"
-//                + "pages = {249--259} \n"
-//                + "}";
-//        System.out.println("PITÄISI OLLA");
-//        System.out.println(shouldBe);
-//        System.out.println("ON");
-//        System.out.println(art.toBibTex());
-//        assertEquals(shouldBe, art.toBibTex());
+        String shouldBe = "@article{W04,\n"
+                + "author = {Whittington, Keith J.},\n"
+                + "title = {Infusing active learning into introductory programming courses},\n"
+                + "journal = {J. Comput. Small Coll.},\n"
+                + "year = {2004},\n"
+                + "volume = {19},\n"
+                + "number = {5},\n"
+                + "pages = {249--259}\n"
+                + "}";
+        assertEquals(shouldBe, art.toBibTex());
     }
 
 }

@@ -57,4 +57,13 @@ public class ReferenceService {
                 inproceedingsRepository.save((InProceedings) ref);
         }
     }
+    
+    public String returnAllinBibTeXStrings() {
+        List<Reference> references = findAll();
+        String s = ""; 
+        for (Reference r : references) {
+            s = s +r.toBibTex() + "\n";
+        }
+        return s;
+    }
 }

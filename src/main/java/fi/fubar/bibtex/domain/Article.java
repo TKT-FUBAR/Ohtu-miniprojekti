@@ -1,5 +1,6 @@
 package fi.fubar.bibtex.domain;
 
+import fi.fubar.bibtex.util.StringUtils;
 import javax.persistence.Entity;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 import javax.persistence.GeneratedValue;
@@ -126,13 +127,30 @@ public class Article extends AbstractPersistable<Long> implements Reference {
     }
 
     @Override
+    public String getType() {
+        return "article";
+    }
+
+    @Override
     public String toString() {
         return "Article: " + author + ". " + title;
     }
 
     @Override
     public String toBibTex() {
-        return "@article{}";
+        StringBuilder sb = new StringBuilder("@article{");
+        sb.append(StringUtils.actualOrDefault(handle));
+        sb.append(",\nauthor = {").append(StringUtils.actualOrDefault(author)).append("}");
+        sb.append(",\ntitle = {").append(StringUtils.actualOrDefault(title)).append("}");
+        sb.append(",\njournal = {").append(StringUtils.actualOrDefault(journal)).append("}");
+        sb.append(",\nyear = {").append(StringUtils.actualOrDefault(year)).append("}");
+        sb.append(",\nvolume = {").append(StringUtils.actualOrDefault(volume)).append("}");
+        StringUtils.optional(sb, "number", number);
+        StringUtils.optional(sb, "pages", pages);
+        StringUtils.optional(sb, "month", month);
+        StringUtils.optional(sb, "note", note);
+        sb.append("\n}");
+        return StringUtils.escapeScandics(sb.toString());
     }
 
 }

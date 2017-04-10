@@ -7,4 +7,3 @@ Feature: user can create an account
     And the form is submitted
     Then a "user" is added.
 
-  Scenario: user can log in with created account

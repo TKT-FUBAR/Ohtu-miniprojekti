@@ -22,7 +22,12 @@ public class Stepdefs {
 //        } catch (Exception e) {
 //            System.out.println("Drivermanager failed");
 //        }
-        File file = new File("lib/geckodriver");
+        File file;
+        if (System.getProperty("os.name").matches("Mac OS X")) {
+            file = new File("lib/macgeckodriver");
+        } else {
+            file = new File("lib/geckodriver");
+        }   
         String absolutePath = file.getAbsolutePath();
         System.setProperty("webdriver.gecko.driver", absolutePath);
 
@@ -47,6 +52,7 @@ public class Stepdefs {
 
     @Given("^has navigated to the \"([^\"]*)\" tab")
     public void user_navigates_to_the_tab(String str1) throws Throwable {
+        Thread.sleep(1000);
         driver.findElement(By.name(str1)).click();
         Thread.sleep(1000);
     }
@@ -58,6 +64,7 @@ public class Stepdefs {
 
     @Given("^clicks the  \"([^\"]*)\" link$")
     public void clicks_the_link(String arg1) throws Throwable {
+        Thread.sleep(1000);
         driver.findElement(By.linkText(arg1)).click();
         Thread.sleep(1000);
     }

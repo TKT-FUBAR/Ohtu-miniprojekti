@@ -24,6 +24,6 @@ Feature: User can add book reference
   Scenario: user can not log in with incorrect username and correct password
     Given user navigates to the "login" page
     When the entry "foo1" is entered into the field "name"
-    And the endry "bar" is entered into the field "password"
+    And the entry "bar" is entered into the field "password"
     And the form is submitted
     Then user is not logged in and error is shown

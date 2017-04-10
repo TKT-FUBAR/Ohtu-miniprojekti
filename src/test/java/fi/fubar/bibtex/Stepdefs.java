@@ -50,6 +50,11 @@ public class Stepdefs {
     public void has_navigated_to_the_page(String arg1) throws Throwable {
         assertTrue(driver.getCurrentUrl().contains(arg1));
     }
+    
+    @Given("^clicks the \"([^\"]*)\" link$")
+    public void clicks_the_link(String arg1) throws Throwable {
+       driver.findElement(By.name(arg1)).click();
+    }
 
     @When("^the entry \"([^\"]*)\" is entered into the field \"([^\"]*)\"$")
     public void the_entry_is_entered_into_the_field(String entry, String field) throws Throwable {

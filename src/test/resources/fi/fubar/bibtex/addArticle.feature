@@ -1,9 +1,9 @@
 Feature: User can add article reference
 
-    Scenario: user can add book reference using webform
+    Scenario: user can add article reference using webform
         Given user is logged in
         And clicks the  "Add a reference" link
-        And has navigated to the "add_book" tab 
+        And has navigated to the "add_article" tab 
         When the entry "foo" is entered into the field "handle" of "form-article" form
         And the entry "BCA" is entered into the field "title" of "form-article" form
         And the entry "Eino Leino" is entered into the field "author" of "form-article" form

@@ -1,6 +1,7 @@
 package fi.fubar.bibtex.controller;
 
 import fi.fubar.bibtex.service.ReferenceService;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -21,8 +22,9 @@ public class BibTeXController {
     //viinakin on parasta raakana.
     @RequestMapping(produces = "application/x-bibtex", value = "/bibtex", method = RequestMethod.GET)
     @ResponseBody
-    public String listInBibTex(Model model) {
+    public String listInBibTex(Model model, HttpServletResponse response) {
         //model.addAttribute("bibTeXreferences", referenceService.returnAllinBibTeXStrings());
+        response.addHeader("Content-disposition", "attachment; filename=\"references.bib\"");
         return referenceService.returnAllinBibTeXStrings();
     }
     

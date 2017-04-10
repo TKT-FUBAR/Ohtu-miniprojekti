@@ -183,7 +183,7 @@ public class InProceedings extends AbstractPersistable<Long> implements Referenc
 
     @Override
     public String toBibTex() {
-        StringBuilder sb = new StringBuilder("@article{");
+        StringBuilder sb = new StringBuilder("@inproceedings{");
         sb.append(StringUtils.actualOrDefault(handle));
         sb.append(",\nauthor = {").append(StringUtils.actualOrDefault(author)).append("}");
         sb.append(",\ntitle = {").append(StringUtils.actualOrDefault(title)).append("}");

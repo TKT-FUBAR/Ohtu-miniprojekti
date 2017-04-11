@@ -25,7 +25,7 @@ public class BibTeXController {
         return "bibtex";
     }
     
-    @RequestMapping(value = "/getbibtex", method = RequestMethod.POST)
+    @RequestMapping(produces = "application/x-bibtex",value = "/getbibtex", method = RequestMethod.POST)
     @ResponseBody
     public String listInBibTex(@RequestParam String filename, HttpServletResponse response) {
         

@@ -13,15 +13,17 @@
                     <a class="index-link" th:href="@{/bibtex}" id="biblink">Get a BibTex</a>
 
                     <h2>References in repository:</h2>
-                    <ul class="reference-list">
-                        <li th:each="reference : ${references}">
-                            <a th:href="@{/references/} + ${reference.type} + '/edit/' + ${reference.id}">
-                                <span class="title" th:text="${reference.title}">Title</span>,
-                                <span class="author" th:text="${reference.creator}">Author</span>,
-                                <span class="handle" th:text="${reference.handle}">Handle</span>
-                            </a>
-                        </li>
-                    </ul>
+                    <table class="table table-striped reference-list">
+                        <tr th:each="reference : ${references}">
+                            <td class="handle" th:text="${reference.handle}">Handle</td>
+                            <td>
+                                <a th:href="@{/references/} + ${reference.type} + '/edit/' + ${reference.id}">
+                                    <span class="title" th:text="${reference.title}">Title</span>
+                                </a>
+                                <div class="author" th:text="${reference.creator}">Author</div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>

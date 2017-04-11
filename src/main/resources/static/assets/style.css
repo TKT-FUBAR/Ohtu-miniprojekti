@@ -97,11 +97,11 @@ a {
     border: 1px;
 }
 
-.reference-list>li>a {
+.reference-list a {
     color: #556566;
 }
 
-.reference-list>li>a:hover, .reference-list>li>a:focus {
+.reference-list a:hover, .reference-list a:focus {
     color: #665565
 }
 
@@ -133,4 +133,18 @@ a {
 }
 #inner input {
     padding: 3px 5px;
+}
+
+.handle {
+    width: 100px;
+    text-align: right;
+    padding-top: 10px !important;
+}
+
+.title {
+    font-size: 18px;
+}
+
+.author {
+    font-style: italic;
 }

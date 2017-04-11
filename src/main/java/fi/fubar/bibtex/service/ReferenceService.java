@@ -51,10 +51,15 @@ public class ReferenceService {
         switch (ref.getType()) {
             case "book":
                 bookRepository.save((Book) ref);
+                break;
             case "article":
                 articleRepository.save((Article) ref);
+                break;
             case "inproceedings":
                 inproceedingsRepository.save((InProceedings) ref);
+                break;
+            default:
+                break;
         }
     }
     

@@ -9,6 +9,39 @@
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                loaded = false;
+                $overlay = $('<div id="overlay"></div>');
+                $inner = $('<div id="inner" />');
+                $overlay.click(close);
+                $('body').append($overlay);
+                $('body').append($inner);
+                $('#biblink').click(function(event){
+                  event.preventDefault();
+                  if(!loaded) {
+                    $.get('bibtex', function(content) { 
+                      open();
+                      $('#inner').append(content);
+                      $('#inner [type="submit"]').click(close);
+                    });
+                    loaded = true;
+                  } else {
+                      open();
+                  }
+                });
+                function close() {
+                    $overlay.removeClass('open');
+                    $('#inner').slideUp({duration:100})
+                }
+                function open() {
+                    $overlay.addClass('open');
+                    $('#inner').css({left:($('#biblink').offset().left) + 'px', top:($('#biblink').offset().top + 18) + 'px'})
+                    $('#inner').slideDown({duration:100})
+                    
+                }
+            });
+        </script>
     </head>
     <body>
         <div>TODO write content</div>

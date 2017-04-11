@@ -1,7 +1,35 @@
 body {
     background-color: #caccaa;
 }
-
 .tab-pane {
     padding-top: 15px;
+}
+#overlay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    z-index: 9;
+}
+#overlay.open, #inner.open {
+    display: block;
+}
+#inner {
+    position: absolute;
+    display: none;
+    z-index: 10;
+    width: 320px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 26px 20px 20px;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+}
+#inner a, #inner br {
+    display: none;
+}
+#inner input {
+    padding: 3px 5px;
 }

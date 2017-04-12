@@ -72,15 +72,25 @@ a {
     padding-left: 130px;
 }
 
-.tab-content {
+/*.tab-content {
     background: #caccaa;
     padding: 12px;
     border: 1px;
     border-style: solid;
     border-color: #e8d9da;
-}
-.tab-pane {
+}*/
+
+.form-horizontal {
+    background: #caccaa;
+    padding: 12px;
     padding-top: 15px;
+    border: 1px;
+    border-style: solid;
+    border-color: #e8d9da;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #d4d6bb;
 }
 
 .index-link {
@@ -139,6 +149,11 @@ a {
     width: 100px;
     text-align: right;
     padding-top: 10px !important;
+    font-weight: bold;
+}
+
+.table table-striped reference-list {
+    color: #3c3d33;
 }
 
 .title {

@@ -10,7 +10,6 @@ Mini project related the [Software Engineering](https://github.com/mluukkai/ohtu
 
 [Sprint 1](https://docs.google.com/spreadsheets/d/1HYBVMPEVb1osny_8HMqPEH_wfJTEHAolTwObCtwdREc/edit#gid=2057570740)
 
-[Spriny 2](https://docs.google.com/spreadsheets/d/1HYBVMPEVb1osny_8HMqPEH_wfJTEHAolTwObCtwdREc/edit#gid=1447702548)
-
+[Sprint 2](https://docs.google.com/spreadsheets/d/1HYBVMPEVb1osny_8HMqPEH_wfJTEHAolTwObCtwdREc/edit#gid=1447702548)
 
 [Sprint 3](https://docs.google.com/spreadsheets/d/1HYBVMPEVb1osny_8HMqPEH_wfJTEHAolTwObCtwdREc/edit#gid=489358515S)

@@ -4,7 +4,6 @@ import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import io.github.bonigarcia.wdm.FirefoxDriverManager;
 import java.io.File;
 import static org.junit.Assert.assertTrue;
 import org.openqa.selenium.By;
@@ -17,17 +16,12 @@ public class Stepdefs {
     WebDriver driver;
 
     public Stepdefs() {
-//        try {
-//            FirefoxDriverManager.getInstance().setup();
-//        } catch (Exception e) {
-//            System.out.println("Drivermanager failed");
-//        }
         File file;
         if (System.getProperty("os.name").matches("Mac OS X")) {
             file = new File("lib/macgeckodriver");
         } else {
             file = new File("lib/geckodriver");
-        }   
+        }
         String absolutePath = file.getAbsolutePath();
         System.setProperty("webdriver.gecko.driver", absolutePath);
 
@@ -62,7 +56,7 @@ public class Stepdefs {
         assertTrue(driver.getCurrentUrl().contains(arg1));
     }
 
-    @Given("^clicks the  \"([^\"]*)\" link$")
+    @Given("^clicks the \"([^\"]*)\" link$")
     public void clicks_the_link(String arg1) throws Throwable {
         Thread.sleep(1000);
         driver.findElement(By.linkText(arg1)).click();
@@ -97,10 +91,50 @@ public class Stepdefs {
         Thread.sleep(1000l);
     }
 
+    @Given("^edit test reference is added$")
+    public void reference_is_added() throws Throwable {
+        Thread.sleep(1000l);
+        if (!driver.getPageSource().contains("testTitle")) {
+            driver.findElement(By.linkText("Add a reference")).click();
+            Thread.sleep(500l);
+            driver.findElement(By.name("add_book")).click();
+            Thread.sleep(500l);
+            driver.findElement(By.id("form-book")).findElement(By.name("handle")).sendKeys("testHandle");
+            driver.findElement(By.id("form-book")).findElement(By.name("title")).sendKeys("testTitle");
+            driver.findElement(By.id("form-book")).findElement(By.name("author")).sendKeys("testAuthor");
+            driver.findElement(By.id("form-book")).findElement(By.name("publisher")).sendKeys("testPublisher");
+            driver.findElement(By.id("form-book")).findElement(By.name("year")).sendKeys("1111");
+            driver.findElement(By.name("submit")).click();
+            Thread.sleep(1000l);
+        }
+    }
+
+    @When("^user clicks on the \"([^\"]*)\" reference$")
+    public void user_clicks_on_the_reference(String arg1) throws Throwable {
+        driver.findElement(By.linkText(arg1)).click();
+        Thread.sleep(1000l);
+    }
+
     @When("^the form \"([^\"]*)\" is submitted$")
     public void the_form_x_is_submitted(String str1) throws Throwable {
         driver.findElement(By.id(str1)).findElement(By.name("submit")).click();
         Thread.sleep(1000l);
+    }
+
+    @When("^user changes the field \"([^\"]*)\" to \"([^\"]*)\"$")
+    public void user_changes_the_field_to_in_the_form(String arg1, String arg2) throws Throwable {
+        driver.findElement(By.name(arg1)).clear();
+        driver.findElement(By.name(arg1)).sendKeys(arg2);
+    }
+
+    @Then("^the reference to \"([^\"]*)\" is removed\\.$")
+    public void the_reference_to_is_removed(String arg1) throws Throwable {
+        pageDoesNotHaveContent(arg1);
+    }
+
+    @Then("^reference to \"([^\"]*)\" is added\\.$")
+    public void reference_to_is_added(String arg1) throws Throwable {
+        pageHasContent(arg1);
     }
 
     @Then("^a reference to \"([^\"]*)\" is added\\.$")
@@ -126,8 +160,21 @@ public class Stepdefs {
         pageHasContent("credentials");
     }
 
+    @Then("^user sees populated fields on the edit form$")
+    public void user_sees_populated_fields_on_the_edit_form() throws Throwable {
+        pageHasContent("testTitle");
+        pageHasContent("testHandle");
+        pageHasContent("testAuthor");
+        pageHasContent("1111");
+        pageHasContent("testPublisher");
+    }
+
     private void pageHasContent(String content) {
         assertTrue(driver.getPageSource().contains(content));
+    }
+
+    private void pageDoesNotHaveContent(String content) {
+        assertTrue(!driver.getPageSource().contains(content));
     }
 
     private void logInWith(String foo, String bar) throws InterruptedException {

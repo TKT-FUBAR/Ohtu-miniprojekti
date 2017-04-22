@@ -71,4 +71,12 @@ public class ReferenceService {
         }
         return s;
     }
+
+    public List<Reference> search(String search) {
+        List<Reference> found = new ArrayList<>();
+        found.addAll(articleRepository.searchAllColumns(search));
+        found.addAll(bookRepository.searchAllColumns(search));
+        found.addAll(inproceedingsRepository.searchAllColumns(search));
+        return found;
+    }
 }

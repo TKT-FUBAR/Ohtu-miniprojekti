@@ -13,6 +13,7 @@
                     <a class="index-link" th:href="@{/bibtex}" id="biblink">Get a BibTex</a>
 
                     <h2>References in repository:</h2>
+                    <div th:include="fragment/forms :: search" th:remove="tag" />
                     <table class="table table-striped reference-list">
                         <tr th:each="reference : ${references}">
                             <td class="handle" th:text="${reference.handle}">Handle</td>

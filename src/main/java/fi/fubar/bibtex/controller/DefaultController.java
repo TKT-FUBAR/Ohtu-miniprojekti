@@ -18,9 +18,4 @@ public class DefaultController {
         return "redirect:/references";
     }
     
-    @RequestMapping(value = "/references", method = RequestMethod.GET)
-    public String list(Model model) {
-        model.addAttribute("references", referenceService.findAll());
-        return "index";
-    }
 }

@@ -93,9 +93,9 @@
                 <input type="hidden" name="id" th:if="${reference}" th:value="${reference.id}" />
             </form>
         </div>
-        
+
         <!-- // Add Article //-->
-        
+
         <div th:fragment="article (action)">
             <form class="form-horizontal" th:method="post" th:action="@{/article/} + ${action}">
                 <div class="form-group">
@@ -167,10 +167,10 @@
                 <input type="hidden" name="id" th:if="${reference}" th:value="${reference.id}" />
             </form>
         </div>
-        
-        
+
+
         <!-- // Add Article //-->
-        
+
         <div th:fragment="inproceedings (action)">
             <form class="form-horizontal" th:method="post" th:action="@{/inproceedings/} + ${action}">
                 <div class="form-group">
@@ -271,6 +271,20 @@
                 <input type="hidden" name="type" value="inproceedings" />
                 <input type="hidden" name="id" th:if="${reference}" th:value="${reference.id}" />
             </form>
+
         </div>
+        <!-- // Add Article //-->
+
+        <div th:fragment="search">
+            <form class="form-inline" th:method="get" th:action="@{/references}">
+                <div class="form-group search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search" th:value="${search != null} ? ${search}" />
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </div>
+            </form>
+        </div>
+
     </body>
 </html>

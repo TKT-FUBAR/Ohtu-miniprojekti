@@ -72,6 +72,10 @@ a {
     padding-left: 130px;
 }
 
+.reference-list td {
+    word-break: break-all;
+}
+
 /*.tab-content {
     background: #caccaa;
     padding: 12px;

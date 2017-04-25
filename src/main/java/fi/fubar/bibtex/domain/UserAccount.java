@@ -25,7 +25,7 @@ public class UserAccount extends AbstractPersistable<Long> {
     }
 
     public void setUsername(String name) {
-        this.username = username;
+        this.username = name;
     }
 
     public void setPassword(String password) {

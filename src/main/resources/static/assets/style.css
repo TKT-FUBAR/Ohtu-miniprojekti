@@ -97,10 +97,10 @@ a {
     background-color: #d4d6bb;
 }
 
-.index-link {
+/*.index-link {
     margin-left: 120px;
     line-height: 2;
-}
+}*/
 
 .reference-list {
     background: #caccaa;
@@ -166,4 +166,15 @@ a {
 
 .author {
     font-style: italic;
+}
+
+.form-group {
+    padding-bottom: 3px;
+}
+
+.headerlinks {
+    border: 0px;
+    width: 100%;
+    text-align: center;
+    margin: 15px;
 }

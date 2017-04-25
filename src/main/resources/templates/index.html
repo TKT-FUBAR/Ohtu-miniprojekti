@@ -20,7 +20,7 @@
                         <div th:include="fragment/forms :: search" th:remove="tag" />
                     </div>
                     <table class="table table-striped reference-list">
-                        <tr th:each="reference : ${references}">
+                        <tr class="reference-row" th:each="reference : ${references}">
                             <td class="handle" th:text="${reference.handle}">Handle</td>
                             <td>
                                 <a th:href="@{/references/} + ${reference.type} + '/edit/' + ${reference.id}">

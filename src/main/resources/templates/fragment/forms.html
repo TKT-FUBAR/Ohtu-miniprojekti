@@ -288,7 +288,7 @@
                 //<![CDATA[
                 window.addEventListener('input', function (e) {
                  var filter = document.getElementsByTagName('input')[0].value.toUpperCase();
-                 var tr = document.getElementsByTagName('tr');
+                 var tr = document.getElementsByClassName('reference-row');
                  for (i = 0; i < tr.length; i++) {
                   if (tr[i]) {
                    if (tr[i].textContent.toUpperCase().indexOf(filter) > -1) {

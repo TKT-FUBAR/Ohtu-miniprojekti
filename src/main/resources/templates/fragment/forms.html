@@ -9,79 +9,79 @@
                 <div class="form-group">
                     <label for="handle" class="col-sm-2 control-label">Handle</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="handle" required="required" />
+                        <input type="text" class="form-control" name="handle" th:value="${reference != null} ? ${reference.handle}" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="title" class="col-sm-2 control-label">Title</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="title" required="required" />
+                        <input type="text" class="form-control" name="title" th:value="${reference != null} ? ${reference.title}" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="author" class="col-sm-2 control-label">Author</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="author" />
+                        <input type="text" class="form-control" name="author" th:value="${reference != null} ? ${reference.author}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="editor" class="col-sm-2 control-label">Editor</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="editor" />
+                        <input type="text" class="form-control" name="editor" th:value="${reference != null} ? ${reference.editor}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="publisher" class="col-sm-2 control-label">Publisher</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="publisher" required="required" />
+                        <input type="text" class="form-control" name="publisher" th:value="${reference != null} ? ${reference.publisher}" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="year" class="col-sm-2 control-label">Year</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="year" required="required" />
+                        <input type="text" class="form-control" name="year" th:value="${reference != null} ? ${reference.year}" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="volume" class="col-sm-2 control-label">Volume</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="volume" />
+                        <input type="text" class="form-control" name="volume" th:value="${reference != null} ? ${reference.volume}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="number" class="col-sm-2 control-label">Number</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="number" />
+                        <input type="text" class="form-control" name="number" th:value="${reference != null} ? ${reference.number}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="series" class="col-sm-2 control-label">Series</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="series" />
+                        <input type="text" class="form-control" name="series" th:value="${reference != null} ? ${reference.series}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="address" class="col-sm-2 control-label">Address</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="address" />
+                        <input type="text" class="form-control" name="address" th:value="${reference != null} ? ${reference.address}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="edition" class="col-sm-2 control-label">Edition</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="edition" />
+                        <input type="text" class="form-control" name="edition" th:value="${reference != null} ? ${reference.edition}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="month" class="col-sm-2 control-label">Month</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="month" />
+                        <input type="text" class="form-control" name="month" th:value="${reference != null} ? ${reference.month}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="note" class="col-sm-2 control-label">Note</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="note" />
+                        <input type="text" class="form-control" name="note" th:value="${reference != null} ? ${reference.note}" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -89,73 +89,73 @@
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
-                <input type="hidden" name="type" value="book" />
+                <input type="hidden" name="type"  value="book" />
                 <input type="hidden" name="id" th:if="${reference}" th:value="${reference.id}" />
             </form>
         </div>
-        
+
         <!-- // Add Article //-->
-        
+
         <div th:fragment="article (action)">
             <form class="form-horizontal" th:method="post" th:action="@{/article/} + ${action}">
                 <div class="form-group">
                     <label for="handle" class="col-sm-2 control-label">Handle</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="handle" required="required" />
+                        <input type="text" class="form-control" name="handle" th:value="${reference != null} ? ${reference.handle}" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="title" class="col-sm-2 control-label">Title</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="title" required="required" />
+                        <input type="text" class="form-control" name="title" th:value="${reference != null} ? ${reference.title}" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="author" class="col-sm-2 control-label">Author</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="author" />
+                        <input type="text" class="form-control" name="author" th:value="${reference != null} ? ${reference.author}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="journal" class="col-sm-2 control-label">Journal</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="journal" />
+                        <input type="text" class="form-control" name="journal" th:value="${reference != null} ? ${reference.journal}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="year" class="col-sm-2 control-label">Year</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="year" required="required" />
+                        <input type="text" class="form-control" name="year" th:value="${reference != null} ? ${reference.year}" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="volume" class="col-sm-2 control-label">Volume</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="volume" />
+                        <input type="text" class="form-control" name="volume" th:value="${reference != null} ? ${reference.volume}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="number" class="col-sm-2 control-label">Number</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="number" />
+                        <input type="text" class="form-control" name="number" th:value="${reference != null} ? ${reference.number}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="pages" class="col-sm-2 control-label">Pages</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="pages" />
+                        <input type="text" class="form-control" name="pages" th:value="${reference != null} ? ${reference.pages}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="month" class="col-sm-2 control-label">Month</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="month" />
+                        <input type="text" class="form-control" name="month" th:value="${reference != null} ? ${reference.month}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="note" class="col-sm-2 control-label">Note</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="note" />
+                        <input type="text" class="form-control" name="note" th:value="${reference != null} ? ${reference.note}" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -167,100 +167,100 @@
                 <input type="hidden" name="id" th:if="${reference}" th:value="${reference.id}" />
             </form>
         </div>
-        
-        
+
+
         <!-- // Add Article //-->
-        
+
         <div th:fragment="inproceedings (action)">
             <form class="form-horizontal" th:method="post" th:action="@{/inproceedings/} + ${action}">
                 <div class="form-group">
                     <label for="handle" class="col-sm-2 control-label">Handle</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="handle" required="required" />
+                        <input type="text" class="form-control" name="handle" th:value="${reference != null} ? ${reference.handle}" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="title" class="col-sm-2 control-label">Title</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="title" required="required" />
+                        <input type="text" class="form-control" name="title" th:value="${reference != null} ? ${reference.title}" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="booktitle" class="col-sm-2 control-label">Book Title</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="booktitle" required="required" />
+                        <input type="text" class="form-control" name="booktitle" th:value="${reference != null} ? ${reference.booktitle}" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="author" class="col-sm-2 control-label">Author</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="author" required="required" />
+                        <input type="text" class="form-control" name="author" th:value="${reference != null} ? ${reference.author}" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="year" class="col-sm-2 control-label">Year</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="year" required="required" />
+                        <input type="text" class="form-control" name="year" th:value="${reference != null} ? ${reference.year}" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="editor" class="col-sm-2 control-label">Editor</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="editor" />
+                        <input type="text" class="form-control" name="editor" th:value="${reference != null} ? ${reference.editor}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="volume" class="col-sm-2 control-label">Volume</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="volume" />
+                        <input type="text" class="form-control" name="volume" th:value="${reference != null} ? ${reference.volume}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="number" class="col-sm-2 control-label">Number</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="number" />
+                        <input type="text" class="form-control" name="number" th:value="${reference != null} ? ${reference.number}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="series" class="col-sm-2 control-label">Series</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="series" />
+                        <input type="text" class="form-control" name="series" th:value="${reference != null} ? ${reference.series}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="pages" class="col-sm-2 control-label">Pages</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="pages" />
+                        <input type="text" class="form-control" name="pages" th:value="${reference != null} ? ${reference.pages}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="address" class="col-sm-2 control-label">Address</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="address" />
+                        <input type="text" class="form-control" name="address" th:value="${reference != null} ? ${reference.address}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="month" class="col-sm-2 control-label">Month</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="month" />
+                        <input type="text" class="form-control" name="month" th:value="${reference != null} ? ${reference.month}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="organization" class="col-sm-2 control-label">Organization</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="organization" />
+                        <input type="text" class="form-control" name="organization" th:value="${reference != null} ? ${reference.organization}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="publisher" class="col-sm-2 control-label">Publisher</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="publisher" />
+                        <input type="text" class="form-control" name="publisher" th:value="${reference != null} ? ${reference.publisher}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="note" class="col-sm-2 control-label">Note</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="note" />
+                        <input type="text" class="form-control" name="note" th:value="${reference != null} ? ${reference.note}" />
                     </div>
                 </div>
                 <div class="form-group">
@@ -271,6 +271,37 @@
                 <input type="hidden" name="type" value="inproceedings" />
                 <input type="hidden" name="id" th:if="${reference}" th:value="${reference.id}" />
             </form>
+
         </div>
+        <!-- // Add Article //-->
+
+        <div th:fragment="search">
+            <form class="form-inline" th:method="get" th:action="@{/references}">
+                <div class="form-group search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search" th:value="${search != null} ? ${search}" />
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-default">Search</button>
+                </div>
+            </form>
+            <script> 
+                //<![CDATA[
+                window.addEventListener('input', function (e) {
+                 var filter = document.getElementsByTagName('input')[0].value.toUpperCase();
+                 var tr = document.getElementsByClassName('reference-row');
+                 for (i = 0; i < tr.length; i++) {
+                  if (tr[i]) {
+                   if (tr[i].textContent.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = '';
+                   } else {
+                    tr[i].style.display = 'none';
+                   }
+                  }
+                 }
+                }, false);
+                //]]>
+            </script>
+        </div>
+
     </body>
 </html>

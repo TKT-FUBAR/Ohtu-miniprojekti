@@ -26,6 +26,15 @@ public class Article extends AbstractPersistable<Long> implements Reference {
     private String pages;
     private String month;
     private String note;
+    private String publisher;
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
 
     @ManyToOne
     private UserAccount owner;

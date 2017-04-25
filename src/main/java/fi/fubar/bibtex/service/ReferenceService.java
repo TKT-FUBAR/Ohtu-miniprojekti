@@ -51,10 +51,15 @@ public class ReferenceService {
         switch (ref.getType()) {
             case "book":
                 bookRepository.save((Book) ref);
+                break;
             case "article":
                 articleRepository.save((Article) ref);
+                break;
             case "inproceedings":
                 inproceedingsRepository.save((InProceedings) ref);
+                break;
+            default:
+                break;
         }
     }
     
@@ -65,5 +70,13 @@ public class ReferenceService {
             s = s +r.toBibTex() + "\n";
         }
         return s;
+    }
+
+    public List<Reference> search(String search) {
+        List<Reference> found = new ArrayList<>();
+        found.addAll(articleRepository.searchAllColumns(search));
+        found.addAll(bookRepository.searchAllColumns(search));
+        found.addAll(inproceedingsRepository.searchAllColumns(search));
+        return found;
     }
 }

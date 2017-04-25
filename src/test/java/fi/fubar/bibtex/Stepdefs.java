@@ -91,8 +91,8 @@ public class Stepdefs {
         Thread.sleep(1000l);
     }
 
-    @Given("^edit test reference is added$")
-    public void reference_is_added() throws Throwable {
+    @Given("^test reference is added$")
+    public void test_reference_is_added() throws Throwable {
         Thread.sleep(1000l);
         if (!driver.getPageSource().contains("testTitle")) {
             driver.findElement(By.linkText("Add a reference")).click();
@@ -125,6 +125,23 @@ public class Stepdefs {
     public void user_changes_the_field_to_in_the_form(String arg1, String arg2) throws Throwable {
         driver.findElement(By.name(arg1)).clear();
         driver.findElement(By.name(arg1)).sendKeys(arg2);
+    }
+
+    @When("^user searches for \"([^\"]*)\"$")
+    public void user_searches_for(String arg1) throws Throwable {
+        driver.findElement(By.id("form-search")).findElement(By.name("search")).sendKeys(arg1);
+        driver.findElement(By.id("form-search")).findElement(By.name("submit")).click();
+        Thread.sleep(500l);
+    }
+
+    @Then("^\"([^\"]*)\" is shown$")
+    public void is_shown(String arg1) throws Throwable {
+        pageHasContent(arg1);
+    }
+
+    @Then("^\"([^\"]*)\" is not shown$")
+    public void is_not_shown(String arg1) throws Throwable {
+        pageDoesNotHaveContent(arg1);
     }
 
     @Then("^the reference to \"([^\"]*)\" is removed\\.$")

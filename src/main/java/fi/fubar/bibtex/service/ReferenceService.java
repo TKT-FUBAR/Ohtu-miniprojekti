@@ -4,6 +4,7 @@ import fi.fubar.bibtex.domain.Article;
 import fi.fubar.bibtex.domain.Book;
 import fi.fubar.bibtex.domain.InProceedings;
 import fi.fubar.bibtex.domain.Reference;
+import fi.fubar.bibtex.domain.UserAccount;
 import fi.fubar.bibtex.repository.ArticleRepository;
 import fi.fubar.bibtex.repository.BookRepository;
 import fi.fubar.bibtex.repository.InProceedingsRepository;
@@ -30,6 +31,15 @@ public class ReferenceService {
         references.addAll(bookRepository.findAll());
         references.addAll(articleRepository.findAll());
         references.addAll(inproceedingsRepository.findAll());
+
+        return references;
+    }
+    
+     public List<Reference> findAllByUser(UserAccount user) {
+        List<Reference> references = new ArrayList<>();
+        references.addAll(bookRepository.findAllByOwner(user));
+        references.addAll(articleRepository.findAllByOwner(user));
+        references.addAll(inproceedingsRepository.findAllByOwner(user));
 
         return references;
     }

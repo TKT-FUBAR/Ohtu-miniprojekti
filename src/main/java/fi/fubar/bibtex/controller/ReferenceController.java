@@ -1,7 +1,11 @@
 package fi.fubar.bibtex.controller;
 
 import fi.fubar.bibtex.domain.Reference;
+import fi.fubar.bibtex.domain.UserAccount;
+import fi.fubar.bibtex.repository.UserRepository;
 import fi.fubar.bibtex.service.ReferenceService;
+import fi.fubar.bibtex.service.SecurityService;
+import fi.fubar.bibtex.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +17,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ReferenceController {
-
+    
+    @Autowired
+    private SecurityService securityService;
+    
+    @Autowired
+    private UserRepository userRepository;
+    
     @Autowired
     private ReferenceService referenceService;
 
     @RequestMapping(value = "/references", method = RequestMethod.GET)
     public String list(Model model, @RequestParam(value = "search", required = false, defaultValue = "") String search) {
         if (search.isEmpty()) {
-            model.addAttribute("references", referenceService.findAll());
+            UserAccount user = userRepository.findByUsername(securityService.findLoggedInUsername());
+            model.addAttribute("references", referenceService.findAllByUser(user));
         } else {
             System.out.println("SEARCHING: " + search);
             model.addAttribute("search", search);

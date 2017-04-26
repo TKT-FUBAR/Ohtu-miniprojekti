@@ -27,6 +27,7 @@ public class Article extends AbstractPersistable<Long> implements Reference {
     private String month;
     private String note;
     private String publisher;
+    private UserAccount user;
 
     public String getPublisher() {
         return publisher;
@@ -165,6 +166,11 @@ public class Article extends AbstractPersistable<Long> implements Reference {
     @Override
     public String getCreator() {
         return author;
+    }
+    
+    @ManyToOne 
+    public UserAccount getUser() {
+        return user;
     }
 
 }

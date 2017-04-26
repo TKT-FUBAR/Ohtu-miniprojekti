@@ -8,4 +8,6 @@ public interface Reference {
     public String getHandle();
     public String getCreator();
     public Long getId();
+    public UserAccount getOwner();
+    public void setOwner(UserAccount owner);
 }

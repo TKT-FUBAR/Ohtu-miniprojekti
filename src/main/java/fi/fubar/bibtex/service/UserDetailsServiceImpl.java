@@ -27,10 +27,10 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         
         
         UserAccount user = userRepository.findByUsername(username);
+        
         if (user == null) {
             throw new UsernameNotFoundException(username+" not found");
         }
-        
         
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         grantedAuthorities.add(new SimpleGrantedAuthority("USER"));

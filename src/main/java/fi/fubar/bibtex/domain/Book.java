@@ -30,6 +30,7 @@ public class Book extends AbstractPersistable<Long> implements Reference {
     private String month;
     private String note;
     
+    
     @ManyToOne
     private UserAccount owner;
 
@@ -203,5 +204,5 @@ public class Book extends AbstractPersistable<Long> implements Reference {
             creator += ", ";
         creator += editor;
         return creator;
-    }
+    }  
 }

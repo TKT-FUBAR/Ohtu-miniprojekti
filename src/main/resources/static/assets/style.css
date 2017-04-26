@@ -167,3 +167,9 @@ a {
 .author {
     font-style: italic;
 }
+
+form.delete {
+    padding: 15px;
+    background-color: #bb8888;
+    border: 1px solid #d49e9e;
+}

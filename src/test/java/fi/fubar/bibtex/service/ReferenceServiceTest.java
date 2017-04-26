@@ -9,6 +9,7 @@ import fi.fubar.bibtex.domain.Article;
 import fi.fubar.bibtex.domain.Book;
 import fi.fubar.bibtex.domain.InProceedings;
 import fi.fubar.bibtex.domain.Reference;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Before;
@@ -43,6 +44,14 @@ public class ReferenceServiceTest {
         // rs = new ReferenceService();
         Book b = new Book();
         b.setHandle("Herra Ylppö");
+        b.setTitle("Herra ylpön keittokirja");
+        b.setAuthor("WIlkas");
+        b.setEditor("Editor");
+        b.setPublisher("Joo");
+        b.setNote("Note");
+        b.setSeries("Lol");
+        b.setAddress("Osoite");
+        b.setEdition("Kolmas");
         Article a = new Article();
         a.setHandle("Jouni Hynynen");
         InProceedings i = new InProceedings();
@@ -79,7 +88,27 @@ public class ReferenceServiceTest {
     }
 
     @Test
-    public void bibTexTest() {
+    public void searchTestFound() {
+        String test = "Herra";
+        List<Reference> refs = new ArrayList<>();
+        // refs.addAll(rs.search(test));
+        refs = rs.search(test);
+        if (refs.isEmpty()) {
+            assertTrue(false);
+        } else {
+            assertEquals("Herra Ylppö", refs.get(0).getHandle());
+        }
+    
+}
+    @Test
+    public void searchTestNotFound() {
+        String test = "ETlöydä";
+        List<Reference> refs = rs.search(test);
+        assertTrue(refs.isEmpty());
+    }
+
+@Test
+        public void bibTexTest() {
 //        String shouldBe = "@book{Herra Ylpp\\\"{o},\n"
 //                + "author = {N/A},\n"
 //                + "title = {N/A},\n"

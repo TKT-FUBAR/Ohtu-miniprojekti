@@ -97,10 +97,10 @@ a {
     background-color: #d4d6bb;
 }
 
-.index-link {
+/*.index-link {
     margin-left: 120px;
     line-height: 2;
-}
+}*/
 
 .reference-list {
     background: #caccaa;
@@ -172,4 +172,15 @@ form.delete {
     padding: 15px;
     background-color: #bb8888;
     border: 1px solid #d49e9e;
+}
+
+.form-group {
+    padding-bottom: 3px;
+}
+
+.headerlinks {
+    border: 0px;
+    width: 100%;
+    text-align: center;
+    margin: 15px;
 }

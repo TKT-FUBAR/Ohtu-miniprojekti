@@ -281,9 +281,26 @@
                     <div class="input-group">
                         <input type="text" class="form-control" name="search" th:value="${search != null} ? ${search}" />
                     </div>
-                    <button type="submit" class="btn btn-default">Search</button>
+                    <button type="submit" name="submit" class="btn btn-default">Search</button>
                 </div>
             </form>
+            <script> 
+                //<![CDATA[
+                window.addEventListener('input', function (e) {
+                 var filter = document.getElementsByTagName('input')[0].value.toUpperCase();
+                 var tr = document.getElementsByClassName('reference-row');
+                 for (i = 0; i < tr.length; i++) {
+                  if (tr[i]) {
+                   if (tr[i].textContent.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = '';
+                   } else {
+                    tr[i].style.display = 'none';
+                   }
+                  }
+                 }
+                }, false);
+                //]]>
+            </script>
         </div>
 
         <div th:fragment="delete (type)">

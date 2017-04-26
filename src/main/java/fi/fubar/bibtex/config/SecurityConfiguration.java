@@ -1,17 +1,32 @@
 
 package fi.fubar.bibtex.config;
 
+import fi.fubar.bibtex.domain.UserAccount;
+import fi.fubar.bibtex.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
- 
+import org.springframework.security.core.userdetails.UserDetailsService;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
- 
+    
+    @Autowired
+    private UserDetailsService userDetailsService;
+    
+    @Autowired
+    private UserRepository userRepository;
+
+//    public SecurityConfiguration() {
+//        
+//    }
+    
+    
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // CSRF and same-origin headers disabled to enable using H2 console ( http:// ... /h2-console/ )
@@ -28,7 +43,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
  
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("foo").password("bar").roles("USER");
+        UserAccount foobar = new UserAccount();
+        foobar.setUsername("foo");
+        foobar.setPassword("bar");
+        userRepository.save(foobar);
+        auth.userDetailsService(userDetailsService);
+               // can't combine these two.
+//            auth.inMemoryAuthentication()
+//                .withUser("foo").password("bar").roles("USER");
     }
 }

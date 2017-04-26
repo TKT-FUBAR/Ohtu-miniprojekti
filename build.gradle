@@ -24,8 +24,9 @@ run {
 
 repositories {
     mavenCentral()
+    maven { url 'https://repo.spring.io/snapshot' }
 }
-
+    
 mainClassName='fi.fubar.bibtex.Main'
 
 dependencies {
@@ -63,3 +64,4 @@ test {
     testLogging.showStandardStreams = true
     systemProperties System.getProperties()
 }
+

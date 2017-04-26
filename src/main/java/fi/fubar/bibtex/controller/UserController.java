@@ -3,6 +3,7 @@ package fi.fubar.bibtex.controller;
 
 import fi.fubar.bibtex.repository.UserRepository;
 import fi.fubar.bibtex.domain.UserAccount;
+import fi.fubar.bibtex.service.SecurityService;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
     
+    @Autowired
+    private SecurityService securityService;
+
+    
     @RequestMapping(value = "/createuser")
     public String home(Model model) {
         model.addAttribute("userdb", userRepository.findAll());
@@ -26,6 +31,9 @@ public class UserController {
     @RequestMapping(value = "/createuser", method = RequestMethod.POST)
     public String add(UserAccount user) {
         userRepository.save(user);
-        return "redirect:/createuser";
+        
+        securityService.autologin(user.getUsername(), user.getPassword());
+
+        return "redirect:/references";
     }
 }

@@ -303,5 +303,12 @@
             </script>
         </div>
 
+        <div th:fragment="delete (type)">
+            <form class="delete" id="delete" th:method="post" th:action="@{/} + ${type} + '/delete'">
+                <input type="hidden" name="id" th:value="${reference.id}" />
+                <input type="submit" name="submit" value="Delete" class="btn btn-default" />
+            </form>
+        </div>
+
     </body>
 </html>

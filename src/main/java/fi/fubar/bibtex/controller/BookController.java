@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = "/book")
@@ -25,6 +26,12 @@ public class BookController {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(@ModelAttribute Book book) {
         bookRepository.save(book);
+        return "redirect:/";
+    }
+    
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String delete(@RequestParam Long id) {
+        bookRepository.delete(id);
         return "redirect:/";
     }
 }

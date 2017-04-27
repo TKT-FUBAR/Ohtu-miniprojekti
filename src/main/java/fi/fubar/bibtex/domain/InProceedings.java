@@ -31,7 +31,6 @@ public class InProceedings extends AbstractPersistable<Long> implements Referenc
     private String organization;
     private String publisher;
     private String note;
-    private UserAccount user;
 
     @ManyToOne
     private UserAccount owner;
@@ -209,8 +208,4 @@ public class InProceedings extends AbstractPersistable<Long> implements Referenc
         return author;
     }
     
-    @ManyToOne 
-    public UserAccount getUser() {
-        return user;
-    }
 }

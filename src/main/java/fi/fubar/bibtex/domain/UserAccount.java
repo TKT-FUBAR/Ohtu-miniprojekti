@@ -2,7 +2,6 @@
 package fi.fubar.bibtex.domain;
 
 import java.util.Set;
-import javax.persistence.*;
 import javax.persistence.Entity;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 import javax.persistence.GeneratedValue;
@@ -10,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -22,11 +20,11 @@ public class UserAccount extends AbstractPersistable<Long> {
     private String username;
     private String password;
     @OneToMany
-    @JoinTable(name = "user_account_articles", joinColumns = {@JoinColumn(name = "user_account_id")}, inverseJoinColumns = {@JoinColumn(name = "article_id")})
+    @JoinTable(name = "user_account_article", joinColumns = {@JoinColumn(name = "user_account_id")}, inverseJoinColumns = {@JoinColumn(name = "article_id")})
     private Set<Article> articles;
     
     @OneToMany
-    @JoinTable(name = "user_account_books", joinColumns = {@JoinColumn(name = "user_account_id")}, inverseJoinColumns = {@JoinColumn(name = "book_id")})
+    @JoinTable(name = "user_account_book", joinColumns = {@JoinColumn(name = "user_account_id")}, inverseJoinColumns = {@JoinColumn(name = "book_id")})
     private Set<Book> books;
     
     @OneToMany

@@ -7,6 +7,7 @@ import fi.fubar.bibtex.service.ReferenceService;
 import fi.fubar.bibtex.service.SecurityService;
 import fi.fubar.bibtex.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,8 +30,11 @@ public class ReferenceController {
 
     @RequestMapping(value = "/references", method = RequestMethod.GET)
     public String list(Model model, @RequestParam(value = "search", required = false, defaultValue = "") String search) {
+        System.out.println("ReferenceController: "+SecurityContextHolder.getContext().getAuthentication().getName());
         if (search.isEmpty()) {
+            System.out.println("ReferenceControllerthroughSecurityService: "+securityService.findLoggedInUsername());
             UserAccount user = userRepository.findByUsername(securityService.findLoggedInUsername());
+            //System.out.println("user:" +user.getUsername());
             model.addAttribute("references", referenceService.findAllByUser(user));
         } else {
             System.out.println("SEARCHING: " + search);

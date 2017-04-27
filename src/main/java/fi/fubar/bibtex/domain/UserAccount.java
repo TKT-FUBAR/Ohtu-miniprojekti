@@ -20,15 +20,15 @@ public class UserAccount extends AbstractPersistable<Long> {
     private String username;
     private String password;
     @OneToMany
-    @JoinTable(name = "user_account_article", joinColumns = {@JoinColumn(name = "user_account_id")}, inverseJoinColumns = {@JoinColumn(name = "article_id")})
+    @JoinTable(name = "user_account_articles", joinColumns = {@JoinColumn(name = "user_account_id")}, inverseJoinColumns = {@JoinColumn(name = "article_id")})
     private Set<Article> articles;
     
     @OneToMany
-    @JoinTable(name = "user_account_book", joinColumns = {@JoinColumn(name = "user_account_id")}, inverseJoinColumns = {@JoinColumn(name = "book_id")})
+    @JoinTable(name = "user_account_books", joinColumns = {@JoinColumn(name = "user_account_id")}, inverseJoinColumns = {@JoinColumn(name = "book_id")})
     private Set<Book> books;
     
     @OneToMany
-    @JoinTable(name = "user_account_inproceedings", joinColumns = {@JoinColumn(name = "user_account_id")}, inverseJoinColumns = {@JoinColumn(name = "inproceedings_id")})
+    @JoinTable(name = "user_account_inproceedingses", joinColumns = {@JoinColumn(name = "user_account_id")}, inverseJoinColumns = {@JoinColumn(name = "inproceedings_id")})
     private Set<InProceedings> inproceedingses;
 
     public String getUsername() {
@@ -39,8 +39,8 @@ public class UserAccount extends AbstractPersistable<Long> {
         return password;
     }
 
-    public void setUsername(String name) {
-        this.username = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setPassword(String password) {

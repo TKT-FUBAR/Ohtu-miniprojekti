@@ -43,10 +43,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
  
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        UserAccount foobar = new UserAccount();
-        foobar.setUsername("foo");
-        foobar.setPassword("bar");
-        userRepository.save(foobar);
+        // create foo,bar if not exists
+        if (userRepository.findByUsername("foo") == null){
+            UserAccount foobar = new UserAccount();
+            foobar.setUsername("foo");
+            foobar.setPassword("bar");
+            userRepository.save(foobar);
+        }    
         auth.userDetailsService(userDetailsService);
                // can't combine these two.
 //            auth.inMemoryAuthentication()

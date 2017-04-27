@@ -37,6 +37,8 @@ public class ArticleController {
     
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(@ModelAttribute Article article) {
+        UserAccount user = userRepository.findByUsername(securityService.findLoggedInUsername());
+        article.setOwner(user);
         articleRepository.save(article);
         return "redirect:/";
     }

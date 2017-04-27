@@ -38,6 +38,8 @@ public class InProceedingsController {
     
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(@ModelAttribute InProceedings in) {
+        UserAccount user = userRepository.findByUsername(securityService.findLoggedInUsername());
+        in.setOwner(user);
         inProceedingsRepository.save(in);
         return "redirect:/";
     }

@@ -34,7 +34,6 @@ public class ReferenceController {
         if (search.isEmpty()) {
             System.out.println("ReferenceControllerthroughSecurityService: "+securityService.findLoggedInUsername());
             UserAccount user = userRepository.findByUsername(securityService.findLoggedInUsername());
-            //System.out.println("user:" +user.getUsername());
             model.addAttribute("references", referenceService.findAllByUser(user));
         } else {
             System.out.println("SEARCHING: " + search);

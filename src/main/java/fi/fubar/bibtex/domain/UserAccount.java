@@ -19,6 +19,7 @@ public class UserAccount extends AbstractPersistable<Long> {
     private Long id;
     private String username;
     private String password;
+    
     @OneToMany
     @JoinTable(name = "user_account_articles", joinColumns = {@JoinColumn(name = "user_account_id")}, inverseJoinColumns = {@JoinColumn(name = "article_id")})
     private Set<Article> articles;

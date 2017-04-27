@@ -36,6 +36,8 @@ public class BookController {
     
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String edit(@ModelAttribute Book book) {
+        UserAccount user = userRepository.findByUsername(securityService.findLoggedInUsername());
+        book.setOwner(user);
         bookRepository.save(book);
         return "redirect:/";
     }

@@ -1,6 +1,6 @@
 package fi.fubar.bibtex.controller;
 
-import fi.fubar.bibtex.service.ACMService;
+import fi.fubar.bibtex.service.ImportBibTexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class ACMController {
+public class ImportBibTexController {
 
     @Autowired
-    private ACMService ACMService;
+    private ImportBibTexService importBibTexService;
 
-    @RequestMapping(value = "/acm", method = RequestMethod.GET)
+    @RequestMapping(value = "/importBibTex", method = RequestMethod.GET)
     public String acmPage() {
-        return "acm";
+        return "importBibTex";
     }
 
-    @RequestMapping(value = "/getACM", method = RequestMethod.POST)
-    public String listInBibTex(@RequestParam String url) {
-        ACMService.importAcm(url);
+    @RequestMapping(value = "/importBibTex", method = RequestMethod.POST)
+    public String listInBibTex(@RequestParam String bibimport) {
+        importBibTexService.importBibTex(bibimport);
         return "redirect:/";
     }
 

@@ -1,3 +1,6 @@
+/*
+USELESS FOR NOW
+
 package fi.fubar.bibtex.util;
 
 public class WebUtils {
@@ -27,3 +30,4 @@ public class WebUtils {
     }
 
 }
+*/

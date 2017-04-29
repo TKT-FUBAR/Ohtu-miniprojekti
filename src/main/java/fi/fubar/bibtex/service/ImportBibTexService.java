@@ -4,29 +4,24 @@ import fi.fubar.bibtex.domain.Article;
 import fi.fubar.bibtex.domain.Book;
 import fi.fubar.bibtex.domain.InProceedings;
 import fi.fubar.bibtex.domain.Reference;
-import fi.fubar.bibtex.util.WebUtils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ACMService {
+public class ImportBibTexService {
 
     @Autowired
     private ReferenceService referenceService;
 
-    public void importAcm(String url) {
-        String data = getACMData(url);
-        Reference ref = getRefType(data);
+    public void importBibTex(String bibtex) {
+        System.out.println(bibtex);
+        Reference ref = getRefType(bibtex);
         if (ref != null) {
-            parseData(ref, data);
+            parseData(ref, bibtex);
             referenceService.save(ref);
         }
-    }
-
-    private String getACMData(String url) {
-        return WebUtils.getACMData(url);
     }
 
     private Reference getRefType(String data) {

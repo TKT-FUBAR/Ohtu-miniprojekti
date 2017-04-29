@@ -14,12 +14,12 @@ public class ImportBibTexController {
     private ImportBibTexService importBibTexService;
 
     @RequestMapping(value = "/importBibTex", method = RequestMethod.GET)
-    public String acmPage() {
+    public String bibtexPage() {
         return "importBibTex";
     }
 
     @RequestMapping(value = "/importBibTex", method = RequestMethod.POST)
-    public String listInBibTex(@RequestParam String bibimport) {
+    public String importBibtex(@RequestParam String bibimport) {
         importBibTexService.importBibTex(bibimport);
         return "redirect:/";
     }

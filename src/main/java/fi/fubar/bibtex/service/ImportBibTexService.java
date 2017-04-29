@@ -48,7 +48,7 @@ public class ImportBibTexService {
 
     private void parseData(Reference ref, String data) {
         String[] split = data.split("\n");
-        //parse fields that are in all references        
+        //parse fields that are in all references
         ref.setHandle(parseHandle(split[0]));
         String title = parseField("title", split);
         if (title.isEmpty()) {

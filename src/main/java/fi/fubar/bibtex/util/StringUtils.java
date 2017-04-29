@@ -22,4 +22,13 @@ public class StringUtils {
         texString = texString.replace("Ä", "\\\"{A}");
         return texString.replace("Ö", "\\\"{O}");
     }
+    
+    public static String scandicsBack(String texString) {
+        texString = texString.replace("\\aa", "å");
+        texString = texString.replace("\\AA", "Å");
+        texString = texString.replace("\\\"{a}", "ä");
+        texString = texString.replace("\\\"{o}", "ö");
+        texString = texString.replace("\\\"{A}", "Ä");
+        return texString.replace("\\\"{O}", "Ö");
+    }
 }

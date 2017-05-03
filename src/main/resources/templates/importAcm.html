@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Import ACM</title>
+    <head th:include="fragment/base :: head (title='Import ACM')">
+        <title></title>
     </head>
 
     <body>
         <form method="POST" id="acm-import" action="/importAcm">
             <fieldset>
-                ACM URL: <input type="text" name="acmurl" id="acmurl" size="15"/>
+                <label class="col-sm-2 control-label">ACM URL: </label><input class="form-control" type="text" name="acmurl" id="acmurl" size="15"/>
                 <br/>
-                <input name="import ACM" type="submit" value="Import ACM" />
+                <input name="import ACM" type="submit" value="Import ACM" class="btn btn-primary"/>
             </fieldset>
         </form> 
-        <p><a href="/">back to home</a></p>    
+        <p><a class="index-link" style="margin-left: 29px;" href="/">back to home</a></p>    
     </body>
 </html>

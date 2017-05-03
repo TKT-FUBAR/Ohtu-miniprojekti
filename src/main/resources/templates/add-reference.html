@@ -31,6 +31,26 @@
                 </div>
             </div>
         </div>
+        <script>
+            //<![CDATA[
+            var elems = document.getElementsByTagName('input');
+            for (i = 0; i < elems.length; i++) {
+             if (!elems[i].value && elems[i].getAttribute('required')) {
+              elems[i].style.backgroundColor = 'lavenderblush';
+             }
+            }
+            window.addEventListener('input', function (e) {
+             var inputs = document.getElementsByTagName('input');
+             for (i = 0; i < inputs.length; i++) {
+              if (!inputs[i].value && inputs[i].getAttribute('required')) {
+               inputs[i].style.backgroundColor = 'lavenderblush';
+              } else {
+               inputs[i].style.backgroundColor = 'white';
+              }
+             }
+            }, false);
+            //]]>
+        </script>
     </body>
 </html>
 

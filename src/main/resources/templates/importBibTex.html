@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Import BibTeX</title>
+    <head th:include="fragment/base :: head (title='Import BibTeX')">
+        <title></title>
     </head>
-
+    
     <body>
         <form method="POST" action="/importBibTex">
             <fieldset>
-                Only one entry at the time (for now)
+                <label class="col-sm-2 control-label" style="width: auto;">Only one entry at the time (for now)</label>
                 <br/>
                 <textarea id="txtArea" rows="10" cols="70" name="bibimport"></textarea>
                 <br/>
-                <input name="import BibTeX" type="submit" value="import" />
+                <input name="import BibTeX" type="submit" value="import" class="btn btn-primary"/>
             </fieldset>
         </form> 
-        <p><a href="/">back to home</a></p>    
+        <p><a class="index-link" style="margin-left: 29px;" href="/">back to home</a></p>    
     </body>
 </html>

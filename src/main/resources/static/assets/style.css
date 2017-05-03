@@ -184,3 +184,10 @@ form.delete {
     text-align: center;
     margin: 15px;
 }
+
+fieldset {
+    background: #caccaa;
+    padding: 15px;
+    border: 1px solid #e8d9da;
+    margin: 29px;
+}

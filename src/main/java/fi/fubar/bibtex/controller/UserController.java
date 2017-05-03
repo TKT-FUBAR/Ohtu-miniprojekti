@@ -37,4 +37,5 @@ public class UserController {
         System.out.println("UserController: "+SecurityContextHolder.getContext().getAuthentication().getName());
         return "redirect:/references";
     }
+    
 }

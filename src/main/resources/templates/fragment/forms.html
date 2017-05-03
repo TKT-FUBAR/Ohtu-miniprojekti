@@ -279,9 +279,10 @@
             <form class="form-inline" th:method="get" th:action="@{/references}">
                 <div class="form-group search">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="search" th:value="${search != null} ? ${search}" />
+                        <input type="text" class="form-control" name="search" 
+                               placeholder="Filter" th:value="${search != null} ? ${search}" />
                     </div>
-                    <button type="submit" name="submit" class="btn btn-default">Search</button>
+                    <button style="display: none;" type="submit" name="submit" class="btn btn-default">Search</button>
                 </div>
             </form>
             <script> 

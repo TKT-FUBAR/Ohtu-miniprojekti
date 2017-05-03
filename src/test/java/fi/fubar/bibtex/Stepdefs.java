@@ -6,6 +6,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import java.io.File;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -136,18 +137,21 @@ public class Stepdefs {
     @When("^user searches for \"([^\"]*)\"$")
     public void user_searches_for(String arg1) throws Throwable {
         driver.findElement(By.id("form-search")).findElement(By.name("search")).sendKeys(arg1);
-        driver.findElement(By.id("form-search")).findElement(By.name("submit")).click();
+        //driver.findElement(By.id("form-search")).findElement(By.name("submit")).click();
         Thread.sleep(500l);
     }
 
     @Then("^\"([^\"]*)\" is shown$")
     public void is_shown(String arg1) throws Throwable {
-        pageHasContent(arg1);
+        assertTrue(driver.findElement(By.tagName("body"))
+                .getText().contains(arg1));
+        //pageHasContent(arg1);
     }
 
     @Then("^\"([^\"]*)\" is not shown$")
     public void is_not_shown(String arg1) throws Throwable {
-        pageDoesNotHaveContent(arg1);
+        assertFalse(driver.findElement(By.tagName("body"))
+                .getText().contains(arg1));
     }
 
     @Then("^the reference to \"([^\"]*)\" is removed\\.$")

@@ -91,6 +91,12 @@ public class Stepdefs {
         Thread.sleep(1000l);
     }
 
+    @When("^the delete button is pressed$")
+    public void the_delete_button_is_pressed() throws Throwable {
+        driver.findElement(By.id("delete")).findElement(By.name("submit")).click();
+        Thread.sleep(1000l);
+    }
+
     @Given("^test reference is added$")
     public void test_reference_is_added() throws Throwable {
         Thread.sleep(1000l);

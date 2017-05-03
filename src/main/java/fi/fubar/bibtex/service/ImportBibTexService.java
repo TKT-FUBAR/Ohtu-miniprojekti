@@ -79,6 +79,7 @@ public class ImportBibTexService {
     private void parseBookData(Book ref, String[] split) {
         ref.setSeries(parseField("series", split));
         ref.setAddress(parseField("address", split));
+        ref.setEditor(parseField("editor", split));
     }
 
     private void parseArticleData(Article ref, String[] split) {

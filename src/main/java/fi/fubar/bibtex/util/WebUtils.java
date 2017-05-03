@@ -19,6 +19,7 @@ public class WebUtils {
             String data = doc.select("PRE").first().ownText();
             return StringUtils.scandicsBack(data);
         } catch (IOException ex) {
+            System.out.println(ex);
             return null;
         }
     }

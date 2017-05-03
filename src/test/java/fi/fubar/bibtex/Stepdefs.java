@@ -123,8 +123,8 @@ public class Stepdefs {
 
     @When("^the form \"([^\"]*)\" is submitted$")
     public void the_form_x_is_submitted(String str1) throws Throwable {
-        driver.findElement(By.id(str1)).findElement(By.name("submit")).click();
-        Thread.sleep(1000l);
+        driver.findElement(By.id(str1)).findElement(By.cssSelector("[type=submit]")).click();
+        Thread.sleep(1500l);
     }
 
     @When("^user changes the field \"([^\"]*)\" to \"([^\"]*)\"$")

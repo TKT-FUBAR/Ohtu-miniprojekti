@@ -5,6 +5,7 @@ import fi.fubar.bibtex.domain.Book;
 import fi.fubar.bibtex.domain.InProceedings;
 import fi.fubar.bibtex.domain.Reference;
 import fi.fubar.bibtex.domain.UserAccount;
+import fi.fubar.bibtex.repository.ReferenceRepository;
 import fi.fubar.bibtex.repository.ArticleRepository;
 import fi.fubar.bibtex.repository.BookRepository;
 import fi.fubar.bibtex.repository.InProceedingsRepository;
@@ -26,21 +27,26 @@ public class ReferenceService {
     @Autowired
     private InProceedingsRepository inproceedingsRepository;
 
-    public List<Reference> findAll() {
-        List<Reference> references = new ArrayList<>();
-        references.addAll(bookRepository.findAll());
-        references.addAll(articleRepository.findAll());
-        references.addAll(inproceedingsRepository.findAll());
+    private ReferenceRepository[] referenceRepositories()
+    {
+        return new ReferenceRepository[] {
+            bookRepository, articleRepository, inproceedingsRepository
+        };
+    }
 
+    public List<Reference> findAll() {
+        List<Reference> references = new ArrayList();
+        for (ReferenceRepository repository : referenceRepositories()) {
+            references.addAll(repository.findAll());
+        }
         return references;
     }
     
      public List<Reference> findAllByUser(UserAccount user) {
-        List<Reference> references = new ArrayList<>();
-        references.addAll(bookRepository.findAllByOwner(user));
-        references.addAll(articleRepository.findAllByOwner(user));
-        references.addAll(inproceedingsRepository.findAllByOwner(user));
-
+        List<Reference> references = new ArrayList();
+        for (ReferenceRepository repository : referenceRepositories()) {
+            references.addAll(repository.findAllByOwner(user));
+        }
         return references;
     }
 
@@ -77,16 +83,16 @@ public class ReferenceService {
         List<Reference> references = findAll();
         String s = ""; 
         for (Reference r : references) {
-            s = s +r.toBibTex() + "\n";
+            s += r.toBibTex() + "\n";
         }
         return s;
     }
 
     public List<Reference> search(String search) {
-        List<Reference> found = new ArrayList<>();
-        found.addAll(articleRepository.searchAllColumns(search));
-        found.addAll(bookRepository.searchAllColumns(search));
-        found.addAll(inproceedingsRepository.searchAllColumns(search));
+        List<Reference> found = new ArrayList();
+        for (ReferenceRepository repository : referenceRepositories()) {
+            found.addAll(repository.searchAllColumns(search));
+        }
         return found;
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface ArticleRepository extends JpaRepository<Article, Long> {
+public interface ArticleRepository extends JpaRepository<Article, Long>, ReferenceRepository {
 
     @Query("SELECT a FROM Article a WHERE LOWER(CONCAT("
             + "a.title, a.author, a.journal, a.note, a.handle"

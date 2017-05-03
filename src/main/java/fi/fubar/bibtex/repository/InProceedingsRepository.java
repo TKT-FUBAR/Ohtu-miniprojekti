@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface InProceedingsRepository extends JpaRepository<InProceedings, Long> {
+public interface InProceedingsRepository extends JpaRepository<InProceedings, Long>, ReferenceRepository {
 
     @Query("SELECT i FROM InProceedings i WHERE LOWER(CONCAT("
             + "i.title, i.author, i.note, i.handle, i.booktitle, i.editor, i.address, i.organization, i.publisher"

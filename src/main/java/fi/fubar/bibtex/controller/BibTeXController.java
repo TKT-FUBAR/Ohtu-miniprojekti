@@ -30,7 +30,7 @@ public class BibTeXController {
     public String listInBibTex(@RequestParam String filename, HttpServletResponse response) {
         
         response.addHeader("Content-disposition", "attachment; filename=\""+filename+".bib\"");
-        return referenceService.returnAllinBibTeXStrings();
+        return referenceService.returnAllUsersReferencesInBibTeXStrings();
     }
     
 }

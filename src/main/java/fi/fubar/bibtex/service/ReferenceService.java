@@ -33,29 +33,26 @@ public class ReferenceService {
     @Autowired
     private UserRepository userRepository;
 
-    private ReferenceRepository[] referenceRepositories()
-    {
-        return new ReferenceRepository[] {
+    private ReferenceRepository[] referenceRepositories() {
+        return new ReferenceRepository[]{
             bookRepository, articleRepository, inproceedingsRepository
         };
     }
 
     public List<Reference> findAll() {
-        
+
         List<Reference> references = new ArrayList();
-        UserAccount user = userRepository.findByUsername(securityService.findLoggedInUsername());
-        if(user == null)
-            // Abandon ship!
-            return references;
-        
         for (ReferenceRepository repository : referenceRepositories()) {
-            references.addAll(repository.findAllByOwner(user));
+            references.addAll(repository.findAll());
         }
         return references;
     }
-    
-     public List<Reference> findAllByUser(UserAccount user) {
+
+    public List<Reference> findAllByUser(UserAccount user) {
         List<Reference> references = new ArrayList();
+        if (user == null) {
+            return references; // Abandon ship!
+        }
         for (ReferenceRepository repository : referenceRepositories()) {
             references.addAll(repository.findAllByOwner(user));
         }
@@ -90,10 +87,14 @@ public class ReferenceService {
                 break;
         }
     }
-    
-    public String returnAllinBibTeXStrings() {
-        List<Reference> references = findAll();
-        String s = ""; 
+
+    public String returnAllUsersReferencesInBibTeXStrings() {
+        UserAccount user = userRepository.findByUsername(securityService.findLoggedInUsername());
+        if(user == null) {
+            return "";
+        }
+        List<Reference> references = findAllByUser(user);
+        String s = "";
         for (Reference r : references) {
             s += r.toBibTex() + "\n";
         }

@@ -9,9 +9,11 @@ import fi.fubar.bibtex.repository.ReferenceRepository;
 import fi.fubar.bibtex.repository.ArticleRepository;
 import fi.fubar.bibtex.repository.BookRepository;
 import fi.fubar.bibtex.repository.InProceedingsRepository;
+import fi.fubar.bibtex.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -26,6 +28,10 @@ public class ReferenceService {
     private BookRepository bookRepository;
     @Autowired
     private InProceedingsRepository inproceedingsRepository;
+    @Autowired
+    private SecurityService securityService;
+    @Autowired
+    private UserRepository userRepository;
 
     private ReferenceRepository[] referenceRepositories()
     {
@@ -35,9 +41,15 @@ public class ReferenceService {
     }
 
     public List<Reference> findAll() {
+        
         List<Reference> references = new ArrayList();
+        UserAccount user = userRepository.findByUsername(securityService.findLoggedInUsername());
+        if(user == null)
+            // Abandon ship!
+            return references;
+        
         for (ReferenceRepository repository : referenceRepositories()) {
-            references.addAll(repository.findAll());
+            references.addAll(repository.findAllByOwner(user));
         }
         return references;
     }

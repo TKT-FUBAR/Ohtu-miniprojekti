@@ -31,4 +31,11 @@ public class StringUtils {
         texString = texString.replace("\\\"{A}", "Ä");
         return texString.replace("\\\"{O}", "Ö");
     }
+    
+    public static String fixPagesSeparator(String pages) {
+        if (pages.contains("-") && !pages.contains("--")) {
+            return pages.replace("-", "--");
+        }
+        return pages;
+    }
 }

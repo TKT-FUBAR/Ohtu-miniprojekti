@@ -7,6 +7,7 @@ import fi.fubar.bibtex.domain.UserAccount;
 import fi.fubar.bibtex.repository.InProceedingsRepository;
 import fi.fubar.bibtex.repository.UserRepository;
 import fi.fubar.bibtex.service.SecurityService;
+import fi.fubar.bibtex.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,16 +32,18 @@ public class InProceedingsController {
     public String add(InProceedings inProceedings) {
         UserAccount user = userRepository.findByUsername(securityService.findLoggedInUsername());
         inProceedings.setOwner(user);
+        inProceedings.setPages(StringUtils.fixPagesSeparator(inProceedings.getPages()));
         inProceedingsRepository.save(inProceedings);
         return "redirect:/";
     }
     
     
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String edit(@ModelAttribute InProceedings in) {
+    public String edit(@ModelAttribute InProceedings inProceedings) {
         UserAccount user = userRepository.findByUsername(securityService.findLoggedInUsername());
-        in.setOwner(user);
-        inProceedingsRepository.save(in);
+        inProceedings.setOwner(user);
+        inProceedings.setPages(StringUtils.fixPagesSeparator(inProceedings.getPages()));
+        inProceedingsRepository.save(inProceedings);
         return "redirect:/";
     }
     

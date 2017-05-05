@@ -6,6 +6,7 @@ import fi.fubar.bibtex.domain.UserAccount;
 import fi.fubar.bibtex.repository.ArticleRepository;
 import fi.fubar.bibtex.repository.UserRepository;
 import fi.fubar.bibtex.service.SecurityService;
+import fi.fubar.bibtex.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,6 +31,7 @@ public class ArticleController {
     public String add(Article article) {
         UserAccount user = userRepository.findByUsername(securityService.findLoggedInUsername());
         article.setOwner(user);
+        article.setPages(StringUtils.fixPagesSeparator(article.getPages()));
         articleRepository.save(article);
         return "redirect:/";
     }
@@ -39,6 +41,7 @@ public class ArticleController {
     public String edit(@ModelAttribute Article article) {
         UserAccount user = userRepository.findByUsername(securityService.findLoggedInUsername());
         article.setOwner(user);
+        article.setPages(StringUtils.fixPagesSeparator(article.getPages()));
         articleRepository.save(article);
         return "redirect:/";
     }

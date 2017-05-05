@@ -90,7 +90,7 @@ public class ReferenceService {
 
     public String returnAllUsersReferencesInBibTeXStrings() {
         UserAccount user = userRepository.findByUsername(securityService.findLoggedInUsername());
-        if(user == null) {
+        if (user == null) {
             return "";
         }
         List<Reference> references = findAllByUser(user);

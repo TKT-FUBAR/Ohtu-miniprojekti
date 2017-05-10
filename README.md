@@ -17,3 +17,4 @@ Default user / password: foo / bar
 
 [Sprint 4](https://docs.google.com/spreadsheets/d/1HYBVMPEVb1osny_8HMqPEH_wfJTEHAolTwObCtwdREc/edit#gid=1402612318)
 
+[Loppuraportti](https://docs.google.com/document/d/1ZcZg5BneE4aINHpdnssc8PNXDev7slCxOnhwHmMkA4U/edit)
